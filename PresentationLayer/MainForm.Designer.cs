@@ -1,7 +1,10 @@
-﻿namespace AppStarter
+﻿using Controller;
+
+namespace AppStarter
 {
     partial class MainForm
     {
+        private readonly MainController _mainController;
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -18,6 +21,11 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public MainForm(MainController mainController)
+        {
+            _mainController = mainController;
         }
 
         #region Windows Form Designer generated code

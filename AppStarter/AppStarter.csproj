@@ -71,6 +71,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Controller\Controller.csproj">
+      <Project>{05396bc2-9337-480c-a079-cf57f7607135}</Project>
+      <Name>Controller</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PresentationLayer\PresentationLayer.csproj">
       <Project>{4fbab7e1-18d4-4714-a6fd-98eee15d2a80}</Project>
       <Name>PresentationLayer</Name>

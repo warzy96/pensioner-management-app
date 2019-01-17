@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,26 +9,39 @@ namespace Model
 {
     internal class Pensioner
     {
+        private int Id { get; }
         private string Oib { get; }
         private string Name { get; set; }
         private string Surname { get; set; }
         private DateTime DateOfBirth { get; set; }
-        private DateTime? DateOfDeath { get; set; }
-        private Address CurrentAddress { get; set; }
+        private DateTime MembershipStart { get; }
         private string PlaceOfBirth { get; set; }
-        private bool IsAlive => DateOfDeath == null;
+        private Address CurrentAddress { get; set; }
+        private IList<Payment> Payments { get; }
+        private IList<PaymentType> RequiredPayments { get; }
 
-        public Pensioner(string oib = null, string name = null, string surname = null,
-            DateTime dateOfBirth = default(DateTime), DateTime? dateOfDeath = default(DateTime?),
-            Address currentAddress = null, string placeOfBirth = null)
+        public Pensioner(int id, string oib, string name, string surname, DateTime dateOfBirth,
+            DateTime membershipStart, string placeOfBirth, Address address)
         {
-            Oib = oib ?? throw new ArgumentNullException(nameof(oib));
-            Name = name ?? throw new ArgumentNullException(nameof(name));
-            Surname = surname ?? throw new ArgumentNullException(nameof(surname));
+            Id = id;
+            Oib = oib;
+            Name = name;
+            Surname = surname;
             DateOfBirth = dateOfBirth;
-            DateOfDeath = dateOfDeath;
-            CurrentAddress = currentAddress ?? throw new ArgumentNullException(nameof(currentAddress));
-            PlaceOfBirth = placeOfBirth ?? throw new ArgumentNullException(nameof(placeOfBirth));
+            MembershipStart = membershipStart;
+            PlaceOfBirth = placeOfBirth;
+            CurrentAddress = address;
+            Payments = new List<Payment>();
+            RequiredPayments = new List<PaymentType>();
+        }
+
+        public Pensioner(int id, string oib, string name, string surname, DateTime dateOfBirth,
+            DateTime membershipStart, string placeOfBirth, Address currentAddress,
+            IList<Payment> payments, IList<PaymentType> requiredPayments) :
+            this(id, oib, name, surname, dateOfBirth, membershipStart, placeOfBirth, currentAddress)
+        {
+            Payments = payments;
+            RequiredPayments = requiredPayments;
         }
     }
 }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Address.cs" />
     <Compile Include="Payment.cs" />
+    <Compile Include="PaymentType.cs" />
     <Compile Include="Pensioner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

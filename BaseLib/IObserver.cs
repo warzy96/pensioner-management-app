@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PresentationLayer
+namespace BaseLib
 {
-    public class Class1
+    public interface IObserver
     {
+        void UpdateView();
     }
 }

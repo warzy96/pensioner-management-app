@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal class PaymentType
+    public class PaymentType
     {
+        public const string Membership = "membership";
+        public const string MutualAidLow = "mutual_aid_low";
+        public const string MutualAidHigh = "mutual_aid_high";
+
         private string Type { get; set; }
         private double Amount { get; set; }
 

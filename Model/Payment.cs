@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal class Payment
+    public class Payment
     {
         private PaymentType Type { get; }
         private DateTime ForYear { get; }

@@ -1,24 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model.Properties;
 
 namespace Model
 {
-    internal class Pensioner
+    public class Pensioner
     {
-        private int Id { get; }
-        private string Oib { get; }
-        private string Name { get; set; }
-        private string Surname { get; set; }
-        private DateTime DateOfBirth { get; set; }
-        private DateTime MembershipStart { get; }
-        private string PlaceOfBirth { get; set; }
-        private Address CurrentAddress { get; set; }
-        private IList<Payment> Payments { get; }
-        private IList<PaymentType> RequiredPayments { get; }
+        public int Id { get; }
+        public string Oib { get; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public DateTime MembershipStart { get; set; }
+        public string PlaceOfBirth { get; set; }
+        public Address CurrentAddress { get; set; }
+        //History of payments made by this pensioner
+        public IList<Payment> Payments { get; }
+        //Types of payments this pensioner has to pay
+        public IList<PaymentType> RequiredPayments { get; }
 
         public Pensioner(int id, string oib, string name, string surname, DateTime dateOfBirth,
             DateTime membershipStart, string placeOfBirth, Address address)
@@ -33,6 +37,7 @@ namespace Model
             CurrentAddress = address;
             Payments = new List<Payment>();
             RequiredPayments = new List<PaymentType>();
+            RequiredPayments.Add(new PaymentType(PaymentType.Membership, Settings.Default.MembershipFee));
         }
 
         public Pensioner(int id, string oib, string name, string surname, DateTime dateOfBirth,

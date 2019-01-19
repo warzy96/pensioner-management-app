@@ -31,7 +31,18 @@
             this.PositiveButton = new System.Windows.Forms.Button();
             this.NegativeButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.CityTextBox = new System.Windows.Forms.TextBox();
+            this.PostalCodeTextBox = new System.Windows.Forms.TextBox();
+            this.StreetTextBox = new System.Windows.Forms.TextBox();
+            this.TownTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.MemberFromDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.PlaceOfBirthTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.DateOfBirthPicker = new System.Windows.Forms.DateTimePicker();
@@ -40,23 +51,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SurnameTextBox = new System.Windows.Forms.TextBox();
-            this.NameTextBox = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.HighRadioButton = new System.Windows.Forms.RadioButton();
+            this.LowRadioButton = new System.Windows.Forms.RadioButton();
+            this.NoRadioButton = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label12 = new System.Windows.Forms.Label();
+            this.IdTextBox = new System.Windows.Forms.TextBox();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -65,29 +67,31 @@
             // PositiveButton
             // 
             this.PositiveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.PositiveButton.Location = new System.Drawing.Point(153, 495);
+            this.PositiveButton.Location = new System.Drawing.Point(153, 578);
             this.PositiveButton.Name = "PositiveButton";
             this.PositiveButton.Size = new System.Drawing.Size(149, 60);
             this.PositiveButton.TabIndex = 0;
             this.PositiveButton.Text = "Spremi";
             this.PositiveButton.UseVisualStyleBackColor = true;
+            this.PositiveButton.Click += new System.EventHandler(this.PositiveButton_Click);
             // 
             // NegativeButton
             // 
             this.NegativeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.NegativeButton.Location = new System.Drawing.Point(485, 498);
+            this.NegativeButton.Location = new System.Drawing.Point(485, 581);
             this.NegativeButton.Name = "NegativeButton";
             this.NegativeButton.Size = new System.Drawing.Size(130, 60);
             this.NegativeButton.TabIndex = 1;
             this.NegativeButton.Text = "Odustani";
             this.NegativeButton.UseVisualStyleBackColor = true;
+            this.NegativeButton.Click += new System.EventHandler(this.NegativeButton_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.MemberFromDateTimePicker);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.PlaceOfBirthTextBox);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.DateOfBirthPicker);
@@ -104,12 +108,111 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osobni podaci";
             // 
-            // textBox1
+            // groupBox2
             // 
-            this.textBox1.Location = new System.Drawing.Point(175, 141);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(595, 31);
-            this.textBox1.TabIndex = 9;
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.CityTextBox);
+            this.groupBox2.Controls.Add(this.PostalCodeTextBox);
+            this.groupBox2.Controls.Add(this.StreetTextBox);
+            this.groupBox2.Controls.Add(this.TownTextBox);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Location = new System.Drawing.Point(7, 219);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(763, 178);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Adresa";
+            // 
+            // CityTextBox
+            // 
+            this.CityTextBox.Location = new System.Drawing.Point(168, 98);
+            this.CityTextBox.Name = "CityTextBox";
+            this.CityTextBox.Size = new System.Drawing.Size(589, 31);
+            this.CityTextBox.TabIndex = 7;
+            // 
+            // PostalCodeTextBox
+            // 
+            this.PostalCodeTextBox.Location = new System.Drawing.Point(168, 135);
+            this.PostalCodeTextBox.Name = "PostalCodeTextBox";
+            this.PostalCodeTextBox.Size = new System.Drawing.Size(241, 31);
+            this.PostalCodeTextBox.TabIndex = 6;
+            // 
+            // StreetTextBox
+            // 
+            this.StreetTextBox.Location = new System.Drawing.Point(168, 61);
+            this.StreetTextBox.Name = "StreetTextBox";
+            this.StreetTextBox.Size = new System.Drawing.Size(589, 31);
+            this.StreetTextBox.TabIndex = 5;
+            // 
+            // TownTextBox
+            // 
+            this.TownTextBox.Location = new System.Drawing.Point(168, 24);
+            this.TownTextBox.Name = "TownTextBox";
+            this.TownTextBox.Size = new System.Drawing.Size(589, 31);
+            this.TownTextBox.TabIndex = 4;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 64);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(113, 25);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Ulica i broj";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 27);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(76, 25);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Mjesto";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 138);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(148, 25);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Poštanski broj";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 101);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 25);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Grad";
+            // 
+            // MemberFromDateTimePicker
+            // 
+            this.MemberFromDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.MemberFromDateTimePicker.Location = new System.Drawing.Point(510, 177);
+            this.MemberFromDateTimePicker.Name = "MemberFromDateTimePicker";
+            this.MemberFromDateTimePicker.Size = new System.Drawing.Size(260, 31);
+            this.MemberFromDateTimePicker.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(422, 182);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(86, 25);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Član od";
+            // 
+            // PlaceOfBirthTextBox
+            // 
+            this.PlaceOfBirthTextBox.Location = new System.Drawing.Point(175, 141);
+            this.PlaceOfBirthTextBox.Name = "PlaceOfBirthTextBox";
+            this.PlaceOfBirthTextBox.Size = new System.Drawing.Size(595, 31);
+            this.PlaceOfBirthTextBox.TabIndex = 9;
             // 
             // label5
             // 
@@ -184,117 +287,11 @@
             this.SurnameTextBox.Size = new System.Drawing.Size(595, 31);
             this.SurnameTextBox.TabIndex = 1;
             // 
-            // NameTextBox
-            // 
-            this.NameTextBox.Location = new System.Drawing.Point(175, 30);
-            this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(595, 31);
-            this.NameTextBox.TabIndex = 0;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(422, 182);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 25);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Član od";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(510, 177);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(260, 31);
-            this.dateTimePicker1.TabIndex = 11;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(7, 219);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(763, 178);
-            this.groupBox2.TabIndex = 12;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Adresa";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 101);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 25);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Grad";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 138);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(148, 25);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Poštanski broj";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 27);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(76, 25);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Mjesto";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 64);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(113, 25);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Ulica i broj";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(168, 24);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(589, 31);
-            this.textBox2.TabIndex = 4;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(168, 61);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(589, 31);
-            this.textBox3.TabIndex = 5;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(168, 135);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(241, 31);
-            this.textBox4.TabIndex = 6;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(168, 98);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(589, 31);
-            this.textBox5.TabIndex = 7;
-            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.radioButton3);
-            this.groupBox3.Controls.Add(this.radioButton2);
-            this.groupBox3.Controls.Add(this.radioButton1);
+            this.groupBox3.Controls.Add(this.HighRadioButton);
+            this.groupBox3.Controls.Add(this.LowRadioButton);
+            this.groupBox3.Controls.Add(this.NoRadioButton);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Location = new System.Drawing.Point(12, 422);
             this.groupBox3.Name = "groupBox3";
@@ -302,6 +299,39 @@
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Plaćanja";
+            // 
+            // HighRadioButton
+            // 
+            this.HighRadioButton.AutoSize = true;
+            this.HighRadioButton.Location = new System.Drawing.Point(359, 29);
+            this.HighRadioButton.Name = "HighRadioButton";
+            this.HighRadioButton.Size = new System.Drawing.Size(85, 29);
+            this.HighRadioButton.TabIndex = 3;
+            this.HighRadioButton.TabStop = true;
+            this.HighRadioButton.Text = "Viša";
+            this.HighRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // LowRadioButton
+            // 
+            this.LowRadioButton.AutoSize = true;
+            this.LowRadioButton.Location = new System.Drawing.Point(267, 29);
+            this.LowRadioButton.Name = "LowRadioButton";
+            this.LowRadioButton.Size = new System.Drawing.Size(86, 29);
+            this.LowRadioButton.TabIndex = 2;
+            this.LowRadioButton.TabStop = true;
+            this.LowRadioButton.Text = "Niža";
+            this.LowRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // NoRadioButton
+            // 
+            this.NoRadioButton.AutoSize = true;
+            this.NoRadioButton.Location = new System.Drawing.Point(191, 29);
+            this.NoRadioButton.Name = "NoRadioButton";
+            this.NoRadioButton.Size = new System.Drawing.Size(70, 29);
+            this.NoRadioButton.TabIndex = 1;
+            this.NoRadioButton.TabStop = true;
+            this.NoRadioButton.Text = "Ne";
+            this.NoRadioButton.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -312,52 +342,47 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "Uzajamna pomoć";
             // 
-            // radioButton1
+            // label12
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(191, 29);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(70, 29);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Ne";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(18, 499);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(128, 25);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Broj knjižice";
             // 
-            // radioButton2
+            // IdTextBox
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(267, 29);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(86, 29);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Niža";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.IdTextBox.Location = new System.Drawing.Point(187, 496);
+            this.IdTextBox.Name = "IdTextBox";
+            this.IdTextBox.Size = new System.Drawing.Size(241, 31);
+            this.IdTextBox.TabIndex = 5;
             // 
-            // radioButton3
+            // NameTextBox
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(359, 29);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(85, 29);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Viša";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.NameTextBox.Location = new System.Drawing.Point(175, 30);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(595, 31);
+            this.NameTextBox.TabIndex = 0;
             // 
             // AddPensionerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 567);
+            this.ClientSize = new System.Drawing.Size(800, 650);
+            this.Controls.Add(this.IdTextBox);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.NegativeButton);
             this.Controls.Add(this.PositiveButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(826, 721);
             this.Name = "AddPensionerForm";
-            this.Text = "AddPensionerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dodavanje člana";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -365,6 +390,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -376,28 +402,30 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox SurnameTextBox;
-        private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox OIBTextBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox PlaceOfBirthTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker DateOfBirthPicker;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker MemberFromDateTimePicker;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox CityTextBox;
+        private System.Windows.Forms.TextBox PostalCodeTextBox;
+        private System.Windows.Forms.TextBox StreetTextBox;
+        private System.Windows.Forms.TextBox TownTextBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton HighRadioButton;
+        private System.Windows.Forms.RadioButton LowRadioButton;
+        private System.Windows.Forms.RadioButton NoRadioButton;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox IdTextBox;
+        private System.Windows.Forms.TextBox NameTextBox;
     }
 }

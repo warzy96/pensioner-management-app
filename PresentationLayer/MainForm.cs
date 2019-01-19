@@ -1,20 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BaseLib;
+using Model;
 
-namespace AppStarter
+namespace PresentationLayer
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        private readonly IMainController _controller;
+        public MainForm(IMainController mainController)
         {
+            _controller = mainController;
+
             InitializeComponent();
+        }
+
+        private void AddPensionerButton_Click(object sender, EventArgs e)
+        {
+            _controller.AddPensioner();
         }
     }
 }

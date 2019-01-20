@@ -7,12 +7,12 @@ using FluentNHibernate.Mapping;
 
 namespace Model.Mapping
 {
-    internal class PaymentTypeMap : ClassMap<PaymentType>
+    class PaymentTypeComponent : ComponentMap<PaymentType>
     {
-        public PaymentTypeMap()
+        public PaymentTypeComponent()
         {
             Map(x => x.Amount).Not.Nullable();
-            Id(x => x.Type).CustomType<int>();
+            Map(x => x.Type).CustomType<int>();
         }
     }
 }

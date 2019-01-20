@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using Model;
 using Model.Mapping;
 using NHibernate;
 using NHibernate.Cfg;
@@ -13,7 +8,7 @@ using NHibernate.Cfg.MappingSchema;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Tool.hbm2ddl;
 
-namespace DataAccessLayer
+namespace Model
 {
     internal class NHibernateHelper
     {
@@ -27,43 +22,18 @@ namespace DataAccessLayer
             return SessionFactory.OpenSession();
         }
 
-        public static ISessionFactory SessionFactory
-        {
-            get
-            {
-                if (_sessionFactory == null)
-                {
-                    //Create the session factory
-                    _sessionFactory = Configuration.BuildSessionFactory();
-                }
-                return _sessionFactory;
-            }
-        }
+        public static ISessionFactory SessionFactory => _sessionFactory ?? (_sessionFactory = Configuration.BuildSessionFactory());
 
-        public static Configuration Configuration
-        {
-            get
-            {
-                if (_configuration == null)
-                {
-                    //Create the nhibernate configuration
-                    _configuration = CreateConfiguration();
-                }
-                return _configuration;
-            }
-        }
+        public static Configuration Configuration => _configuration ?? (_configuration = CreateConfiguration());
 
-        public static HbmMapping Mapping
-        {
-            get { return _mapping ?? (_mapping = CreateMapping()); }
-        }
+        public static HbmMapping Mapping => _mapping ?? (_mapping = CreateMapping());
 
         private static Configuration CreateConfiguration()
         {
             var configuration = Fluently.Configure()
                 .Database(SQLiteConfiguration.Standard
                     .UsingFile("pensionerDatabase.db"))
-                .Mappings(mappings => mappings.FluentMappings.AddFromAssemblyOf<PensionerMap>())
+                .Mappings(mappings => mappings.FluentMappings.AddFromAssemblyOf<Pensioner>())
                 .BuildConfiguration();
 
             var schemaExport = new SchemaExport(configuration);

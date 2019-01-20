@@ -11,18 +11,18 @@ namespace Model
 {
     public class Pensioner
     {
-        public int Id { get; protected set; }
-        public string Oib { get; protected set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public DateTime MembershipStart { get; set; }
-        public string PlaceOfBirth { get; set; }
-        public Address CurrentAddress { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string Oib { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Surname { get; set; }
+        public virtual DateTime DateOfBirth { get; set; }
+        public virtual DateTime MembershipStart { get; set; }
+        public virtual string PlaceOfBirth { get; set; }
+        public virtual Address CurrentAddress { get; set; }
         //History of payments made by this pensioner
-        public IList<Payment> Payments { get; protected set; }
+        public virtual IList<Payment> Payments { get; set; }
         //Types of payments this pensioner has to pay
-        public IList<PaymentType> RequiredPayments { get; protected set; }
+        public virtual IList<PaymentType> RequiredPayments { get; set; }
 
         public Pensioner()
         {

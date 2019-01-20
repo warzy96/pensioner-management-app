@@ -8,11 +8,14 @@ namespace Model
 {
     public class Address
     {
-        public string City { get; set; }
-        public string Town { get; set; }
-        public string Street { get; set; }
-        public int PostalCode { get; set; }
+        public virtual string City { get; set; }
+        public virtual string Town { get; set; }
+        public virtual string Street { get; set; }
+        public virtual int PostalCode { get; set; }
 
+        public Address()
+        {
+        }
         public Address(string city, string town, string street, int postalCode)
         {
             City = city;

@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BaseLib;
+using NHibernate;
 
 namespace Model
 {
@@ -41,11 +42,18 @@ namespace Model
         }
 
         public void AddPensioner(int id, string oib, string name, string surname, DateTime dateOfBirth, DateTime membershipStart, string placeOfBirth, string city, string town, string street, int postalCode)
-        {            
-            var address = new Address(city, town, street, postalCode);
-            var pensioner = new Pensioner(id, oib, name, surname, dateOfBirth, membershipStart, placeOfBirth, address);
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                var transaction = session.BeginTransaction();
+                var address = new Address(city, town, street, postalCode);
+                var pensioner = new Pensioner(id, oib, name, surname, dateOfBirth, membershipStart, placeOfBirth, address);
 
-            _pensioners.Add(pensioner);
+                _pensioners.Add(pensioner);
+
+                session.Save(pensioner);
+                transaction.Commit();
+            }
 
             NotifyObservers();
         }

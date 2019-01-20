@@ -2,7 +2,7 @@
 
 namespace Model.Mapping
 {
-    internal class AddressMap : ClassMap<Address>
+    internal class AddressMap : ComponentMap<Address>
     {
         public AddressMap()
         {

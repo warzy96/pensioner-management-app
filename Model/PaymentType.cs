@@ -15,9 +15,13 @@ namespace Model
             MutualAidHigh
         }
         
-        public TypeEnum Type { get; protected set; }
-        public double Amount { get; set; }
+        public virtual TypeEnum Type { get; set; }
+        public virtual double Amount { get; set; }
 
+        public PaymentType()
+        {
+
+        }
         public PaymentType(TypeEnum type, double amount)
         {
             Type = type;

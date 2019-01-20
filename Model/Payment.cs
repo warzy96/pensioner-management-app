@@ -8,11 +8,14 @@ namespace Model
 {
     public class Payment
     {
-        public int Id { get; protected set; }
-        public Pensioner Pensioner { get; protected set; }
-        public PaymentType Type { get; protected set; }
-        public DateTime ForYear { get; protected set; }
+        public virtual int Id { get; set; }
+        public virtual Pensioner Pensioner { get; set; }
+        public virtual PaymentType Type { get; set; }
+        public virtual DateTime ForYear { get; set; }
 
+        public Payment()
+        {
+        }
         public Payment(Pensioner pensioner, PaymentType type, DateTime forYear)
         {
             Pensioner = pensioner;

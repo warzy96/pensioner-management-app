@@ -24,6 +24,10 @@ namespace Model
         //Types of payments this pensioner has to pay
         public IList<PaymentType> RequiredPayments { get; }
 
+        public Pensioner()
+        {
+        }
+
         public Pensioner(int id, string oib, string name, string surname, DateTime dateOfBirth,
             DateTime membershipStart, string placeOfBirth, Address address)
         {

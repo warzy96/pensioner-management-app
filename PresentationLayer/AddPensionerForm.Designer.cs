@@ -337,13 +337,13 @@
             this.LowRadioButton.Name = "LowRadioButton";
             this.LowRadioButton.Size = new System.Drawing.Size(86, 29);
             this.LowRadioButton.TabIndex = 2;
-            this.LowRadioButton.TabStop = true;
             this.LowRadioButton.Text = "Niža";
             this.LowRadioButton.UseVisualStyleBackColor = true;
             // 
             // NoRadioButton
             // 
             this.NoRadioButton.AutoSize = true;
+            this.NoRadioButton.Checked = true;
             this.NoRadioButton.Location = new System.Drawing.Point(191, 29);
             this.NoRadioButton.Name = "NoRadioButton";
             this.NoRadioButton.Size = new System.Drawing.Size(70, 29);

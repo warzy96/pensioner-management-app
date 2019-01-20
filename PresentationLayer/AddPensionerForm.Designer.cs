@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.PositiveButton = new System.Windows.Forms.Button();
             this.NegativeButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -51,6 +52,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SurnameTextBox = new System.Windows.Forms.TextBox();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.HighRadioButton = new System.Windows.Forms.RadioButton();
             this.LowRadioButton = new System.Windows.Forms.RadioButton();
@@ -58,16 +60,16 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.IdTextBox = new System.Windows.Forms.TextBox();
-            this.NameTextBox = new System.Windows.Forms.TextBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // PositiveButton
             // 
-            this.PositiveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.PositiveButton.Location = new System.Drawing.Point(153, 578);
+            this.PositiveButton.Location = new System.Drawing.Point(187, 556);
             this.PositiveButton.Name = "PositiveButton";
             this.PositiveButton.Size = new System.Drawing.Size(149, 60);
             this.PositiveButton.TabIndex = 0;
@@ -77,8 +79,7 @@
             // 
             // NegativeButton
             // 
-            this.NegativeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.NegativeButton.Location = new System.Drawing.Point(485, 581);
+            this.NegativeButton.Location = new System.Drawing.Point(430, 556);
             this.NegativeButton.Name = "NegativeButton";
             this.NegativeButton.Size = new System.Drawing.Size(130, 60);
             this.NegativeButton.TabIndex = 1;
@@ -88,6 +89,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.NameTextBox);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.MemberFromDateTimePicker);
             this.groupBox1.Controls.Add(this.label6);
@@ -100,10 +102,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.SurnameTextBox);
-            this.groupBox1.Controls.Add(this.NameTextBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 403);
+            this.groupBox1.Size = new System.Drawing.Size(852, 403);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osobni podaci";
@@ -121,7 +122,7 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Location = new System.Drawing.Point(7, 219);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(763, 178);
+            this.groupBox2.Size = new System.Drawing.Size(839, 178);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Adresa";
@@ -132,6 +133,7 @@
             this.CityTextBox.Name = "CityTextBox";
             this.CityTextBox.Size = new System.Drawing.Size(589, 31);
             this.CityTextBox.TabIndex = 7;
+            this.CityTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.CityTextBox_Validating);
             // 
             // PostalCodeTextBox
             // 
@@ -139,6 +141,8 @@
             this.PostalCodeTextBox.Name = "PostalCodeTextBox";
             this.PostalCodeTextBox.Size = new System.Drawing.Size(241, 31);
             this.PostalCodeTextBox.TabIndex = 6;
+            this.PostalCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PostalCodeTextBox_KeyPress);
+            this.PostalCodeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.PostalCodeTextBox_Validating);
             // 
             // StreetTextBox
             // 
@@ -146,6 +150,8 @@
             this.StreetTextBox.Name = "StreetTextBox";
             this.StreetTextBox.Size = new System.Drawing.Size(589, 31);
             this.StreetTextBox.TabIndex = 5;
+            this.StreetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StreetTextBox_KeyPress);
+            this.StreetTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.StreetTextBox_Validating);
             // 
             // TownTextBox
             // 
@@ -153,6 +159,7 @@
             this.TownTextBox.Name = "TownTextBox";
             this.TownTextBox.Size = new System.Drawing.Size(589, 31);
             this.TownTextBox.TabIndex = 4;
+            this.TownTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TownTextBox_Validating);
             // 
             // label10
             // 
@@ -193,7 +200,7 @@
             // MemberFromDateTimePicker
             // 
             this.MemberFromDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.MemberFromDateTimePicker.Location = new System.Drawing.Point(510, 177);
+            this.MemberFromDateTimePicker.Location = new System.Drawing.Point(510, 183);
             this.MemberFromDateTimePicker.Name = "MemberFromDateTimePicker";
             this.MemberFromDateTimePicker.Size = new System.Drawing.Size(260, 31);
             this.MemberFromDateTimePicker.TabIndex = 11;
@@ -213,6 +220,7 @@
             this.PlaceOfBirthTextBox.Name = "PlaceOfBirthTextBox";
             this.PlaceOfBirthTextBox.Size = new System.Drawing.Size(595, 31);
             this.PlaceOfBirthTextBox.TabIndex = 9;
+            this.PlaceOfBirthTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.PlaceOfBirthTextBox_Validating);
             // 
             // label5
             // 
@@ -235,7 +243,7 @@
             // DateOfBirthPicker
             // 
             this.DateOfBirthPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateOfBirthPicker.Location = new System.Drawing.Point(175, 178);
+            this.DateOfBirthPicker.Location = new System.Drawing.Point(175, 183);
             this.DateOfBirthPicker.Name = "DateOfBirthPicker";
             this.DateOfBirthPicker.Size = new System.Drawing.Size(241, 31);
             this.DateOfBirthPicker.TabIndex = 6;
@@ -258,6 +266,8 @@
             this.OIBTextBox.Name = "OIBTextBox";
             this.OIBTextBox.Size = new System.Drawing.Size(595, 31);
             this.OIBTextBox.TabIndex = 4;
+            this.OIBTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OIBTextBox_KeyPress);
+            this.OIBTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.OIBTextBox_Validating);
             // 
             // label2
             // 
@@ -286,6 +296,15 @@
             this.SurnameTextBox.Name = "SurnameTextBox";
             this.SurnameTextBox.Size = new System.Drawing.Size(595, 31);
             this.SurnameTextBox.TabIndex = 1;
+            this.SurnameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.SurnameTextBox_Validating);
+            // 
+            // NameTextBox
+            // 
+            this.NameTextBox.Location = new System.Drawing.Point(175, 30);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(595, 31);
+            this.NameTextBox.TabIndex = 0;
+            this.NameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.NameTextBox_Validating);
             // 
             // groupBox3
             // 
@@ -295,7 +314,7 @@
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Location = new System.Drawing.Point(12, 422);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(776, 68);
+            this.groupBox3.Size = new System.Drawing.Size(770, 68);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Plaćanja";
@@ -357,19 +376,20 @@
             this.IdTextBox.Name = "IdTextBox";
             this.IdTextBox.Size = new System.Drawing.Size(241, 31);
             this.IdTextBox.TabIndex = 5;
+            this.IdTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IdTextBox_KeyPress);
+            this.IdTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.IdTextBox_Validating);
             // 
-            // NameTextBox
+            // errorProvider
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(175, 30);
-            this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(595, 31);
-            this.NameTextBox.TabIndex = 0;
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
             // 
             // AddPensionerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 650);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(876, 650);
             this.Controls.Add(this.IdTextBox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.groupBox3);
@@ -379,7 +399,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(826, 721);
+            this.MinimumSize = new System.Drawing.Size(902, 721);
             this.Name = "AddPensionerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodavanje člana";
@@ -389,6 +409,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,5 +448,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox IdTextBox;
         private System.Windows.Forms.TextBox NameTextBox;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

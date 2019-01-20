@@ -42,7 +42,7 @@ namespace Model
 
         public void AddPensioner(int id, string oib, string name, string surname, DateTime dateOfBirth, DateTime membershipStart, string placeOfBirth, string city, string town, string street, int postalCode)
         {            
-            var address = new Address(id, city, town, street, postalCode);
+            var address = new Address(city, town, street, postalCode);
             var pensioner = new Pensioner(id, oib, name, surname, dateOfBirth, membershipStart, placeOfBirth, address);
 
             _pensioners.Add(pensioner);
@@ -69,7 +69,7 @@ namespace Model
             pensioner.DateOfBirth = dateOfBirth;
             pensioner.MembershipStart = membershipStart;
             pensioner.PlaceOfBirth = placeOfBirth;
-            pensioner.CurrentAddress = new Address(id, city, town, street, postalCode);
+            pensioner.CurrentAddress = new Address(city, town, street, postalCode);
 
             _pensioners.Add(pensioner);
         }

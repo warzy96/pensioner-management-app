@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLayer.Mapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using Model;
+using Model.Mapping;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Cfg.MappingSchema;
@@ -62,9 +62,8 @@ namespace DataAccessLayer
         {
             var configuration = Fluently.Configure()
                 .Database(SQLiteConfiguration.Standard
-                    .ConnectionString("Data Source=PensionerDatabase.db;Version=3")
-                    .AdoNetBatchSize(100))
-                .Mappings(mappings => mappings.FluentMappings.AddFromAssemblyOf<Pensioner>())
+                    .UsingFile("pensionerDatabase.db"))
+                .Mappings(mappings => mappings.FluentMappings.AddFromAssemblyOf<PensionerMap>())
                 .BuildConfiguration();
 
             var schemaExport = new SchemaExport(configuration);

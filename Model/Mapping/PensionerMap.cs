@@ -1,9 +1,8 @@
 ﻿using FluentNHibernate.Mapping;
-using Model;
 
-namespace DataAccessLayer.Mapping
+namespace Model.Mapping
 {
-    class PensionerMap : ClassMap<Pensioner>
+    public class PensionerMap : ClassMap<Pensioner>
     {
         public PensionerMap()
         {
@@ -14,8 +13,9 @@ namespace DataAccessLayer.Mapping
             Map(x => x.PlaceOfBirth);
             Map(x => x.Surname).Not.Nullable();
             Map(x => x.MembershipStart).Not.Nullable();
-            HasMany(x => x.Payments);
-            HasMany(x => x.RequiredPayments);
+            HasMany(x => x.Payments).Inverse().Cascade.All();
+            HasMany(x => x.RequiredPayments).Inverse().Cascade.All();
+            Component(x => x.CurrentAddress);
         }
     }
 }

@@ -8,11 +8,14 @@ namespace Model
 {
     public class Payment
     {
-        private PaymentType Type { get; }
-        private DateTime ForYear { get; }
+        public int Id { get; protected set; }
+        public Pensioner Pensioner { get; protected set; }
+        public PaymentType Type { get; protected set; }
+        public DateTime ForYear { get; protected set; }
 
-        public Payment(PaymentType type, DateTime forYear)
+        public Payment(Pensioner pensioner, PaymentType type, DateTime forYear)
         {
+            Pensioner = pensioner;
             Type = type;
             ForYear = forYear;
         }

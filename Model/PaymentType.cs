@@ -8,14 +8,17 @@ namespace Model
 {
     public class PaymentType
     {
-        public const string Membership = "membership";
-        public const string MutualAidLow = "mutual_aid_low";
-        public const string MutualAidHigh = "mutual_aid_high";
+        public enum TypeEnum
+        {
+            Membership = 1, 
+            MutualAidLow,
+            MutualAidHigh
+        }
+        
+        public TypeEnum Type { get; protected set; }
+        public double Amount { get; set; }
 
-        private string Type { get; set; }
-        private double Amount { get; set; }
-
-        public PaymentType(string type, double amount)
+        public PaymentType(TypeEnum type, double amount)
         {
             Type = type;
             Amount = amount;

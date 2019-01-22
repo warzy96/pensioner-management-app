@@ -1,6 +1,7 @@
 ﻿using FluentNHibernate.Mapping;
+using Model;
 
-namespace Model.Mapping
+namespace DataAccessLayer.Mapping
 {
     internal class AddressMap : ComponentMap<Address>
     {

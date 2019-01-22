@@ -89,6 +89,10 @@
       <Project>{7D90D86B-A2C7-4C12-9AC7-24AEC259CEE0}</Project>
       <Name>BaseLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{1e149050-4c6c-44db-a982-1fa74e7f5495}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{0DDB649A-A89B-4F31-AAEE-9B4B67BC6849}</Project>
       <Name>Model</Name>

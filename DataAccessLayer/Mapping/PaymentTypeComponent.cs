@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentNHibernate.Mapping;
+﻿using FluentNHibernate.Mapping;
+using Model;
 
-namespace Model.Mapping
+namespace DataAccessLayer.Mapping
 {
     class PaymentTypeComponent : ComponentMap<PaymentType>
     {

@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
+using DataAccessLayer.Mapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using Model.Mapping;
+using Model;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Cfg.MappingSchema;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Tool.hbm2ddl;
 
-namespace Model
+namespace DataAccessLayer
 {
-    internal class NHibernateHelper
+    internal class NHibernateService
     {
         private static ISessionFactory _sessionFactory;
         private static Configuration _configuration;
@@ -33,11 +34,11 @@ namespace Model
             var configuration = Fluently.Configure()
                 .Database(SQLiteConfiguration.Standard
                     .UsingFile("pensionerDatabase.db"))
-                .Mappings(mappings => mappings.FluentMappings.AddFromAssemblyOf<Pensioner>())
+                .Mappings(mappings => mappings.FluentMappings.AddFromAssemblyOf<PensionerMap>())
                 .BuildConfiguration();
 
-            var schemaExport = new SchemaExport(configuration);
-            schemaExport.Create(false, true);
+            //var schemaExport = new SchemaExport(configuration);
+            //schemaExport.Create(false, true);
 
             return configuration;
         }

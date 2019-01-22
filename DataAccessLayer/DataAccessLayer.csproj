@@ -80,6 +80,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapping\AddressMap.cs" />
+    <Compile Include="Mapping\PaymentMap.cs" />
+    <Compile Include="Mapping\PaymentTypeComponent.cs" />
+    <Compile Include="Mapping\PaymentTypeMap.cs" />
+    <Compile Include="Mapping\PensionerMap.cs" />
+    <Compile Include="NHibernateHelper.cs" />
+    <Compile Include="PensionerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +94,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BaseLib\BaseLib.csproj">
+      <Project>{7d90d86b-a2c7-4c12-9ac7-24aec259cee0}</Project>
+      <Name>BaseLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{0ddb649a-a89b-4f31-aaee-9b4b67bc6849}</Project>
       <Name>Model</Name>

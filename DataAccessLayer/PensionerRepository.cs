@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using BaseLib;
-using NHibernate;
+using Model;
 
-namespace Model
+namespace DataAccessLayer
 {
     public class PensionerRepository : Subject
     {
@@ -43,7 +38,7 @@ namespace Model
 
         public void AddPensioner(int id, string oib, string name, string surname, DateTime dateOfBirth, DateTime membershipStart, string placeOfBirth, string city, string town, string street, int postalCode)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = NHibernateService.OpenSession())
             {
                 var transaction = session.BeginTransaction();
                 var address = new Address(city, town, street, postalCode);

@@ -15,7 +15,7 @@ namespace BaseLib
             _observers.Add(observer);
         }
 
-        public void Detach(IObserver observer)
+        public void Delete(IObserver observer)
         {
             _observers.Remove(observer);
         }

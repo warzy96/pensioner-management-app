@@ -59,13 +59,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Service\IFileService.cs" />
     <Compile Include="IMainController.cs" />
+    <Compile Include="IMainForm.cs" />
     <Compile Include="IObserver.cs" />
+    <Compile Include="Service\IOutputFileService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ISubject.cs" />
+    <Compile Include="Subject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{0ddb649a-a89b-4f31-aaee-9b4b67bc6849}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

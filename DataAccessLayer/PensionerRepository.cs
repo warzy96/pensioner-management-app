@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BaseLib;
 using Model;
 
@@ -75,6 +76,15 @@ namespace DataAccessLayer
             pensioner.CurrentAddress = new Address(city, town, street, postalCode);
 
             _pensioners.Add(pensioner);
+        }
+
+        public IEnumerable<Pensioner> GetAll()
+        {
+            using (var session = NHibernateService.OpenSession())
+            {
+                var list = session.Query<Pensioner>().ToList();
+                return list;
+            }
         }
     }
 }

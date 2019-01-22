@@ -23,5 +23,20 @@ namespace Model
             Street = street;
             PostalCode = postalCode;
         }
+
+        public string GetPlaceOfResidence()
+        {
+            return Town + ", " + Street;
+        }
+
+        public string GetCityAndZipCode()
+        {
+            return City + ", " + PostalCode;
+        }
+
+        public override string ToString()
+        {
+            return GetPlaceOfResidence() + "; " + GetCityAndZipCode();
+        }
     }
 }

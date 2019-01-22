@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
 namespace BaseLib
 {
-    public interface IMainController
+    public interface IMainForm
     {
-        void AddPensioner();
-        void UpdatePensionerList(IMainForm mainForm);
+        void UpdatePensionerListView(IEnumerable<Pensioner> pensioners);
     }
 }

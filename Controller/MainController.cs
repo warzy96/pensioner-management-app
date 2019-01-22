@@ -22,5 +22,10 @@ namespace Controller
             var addPensionerForm = new AddPensionerForm(_pensionerRepository);
             addPensionerForm.ShowDialog();
         }
+
+        public void UpdatePensionerList(IMainForm mainForm)
+        {
+            mainForm.UpdatePensionerListView(_pensionerRepository.GetAll());
+        }
     }
 }

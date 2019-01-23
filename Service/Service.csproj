@@ -54,6 +54,14 @@
       <Project>{7d90d86b-a2c7-4c12-9ac7-24aec259cee0}</Project>
       <Name>BaseLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{1E149050-4C6C-44DB-A982-1FA74E7F5495}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{0DDB649A-A89B-4F31-AAEE-9B4B67BC6849}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

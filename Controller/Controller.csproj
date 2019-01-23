@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileController.cs" />
     <Compile Include="MainController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,6 +80,10 @@
     <ProjectReference Include="..\PresentationLayer\PresentationLayer.csproj">
       <Project>{4fbab7e1-18d4-4714-a6fd-98eee15d2a80}</Project>
       <Name>PresentationLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{1CA0E61C-D837-4076-834C-3D2BF3C56DAD}</Project>
+      <Name>Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

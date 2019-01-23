@@ -11,13 +11,14 @@ using System.Windows.Forms;
 using BaseLib;
 using DataAccessLayer;
 using Model;
+using Model.Repositories;
 
 namespace PresentationLayer
 {
-    public partial class AddPensionerForm : Form
+    public partial class AddPensionerForm : Form, IAddPensionerForm
     {
-        private readonly PensionerRepository _pensionerRepository;
-        public AddPensionerForm(PensionerRepository pensionerRepository)
+        private readonly IPensionerRepository _pensionerRepository;
+        public AddPensionerForm(IPensionerRepository pensionerRepository)
         {
             _pensionerRepository = pensionerRepository;
 
@@ -172,6 +173,11 @@ namespace PresentationLayer
             {
                 errorProvider.SetError(IdTextBox, null);
             }
+        }
+
+        public bool ShowAddPensionerDialog()
+        {
+            return ShowDialog() == DialogResult.OK;
         }
     }
 }

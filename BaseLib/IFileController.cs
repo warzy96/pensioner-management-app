@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace BaseLib
 {
-    public interface IMainController
+    public interface IFileController
     {
-        void AddPensioner();
-        void UpdatePensionerList(IMainForm mainForm);
-        void ShowCreatePdfForm();
+        void CreateFile<T>(IEnumerable<T> attributesList);
     }
 }

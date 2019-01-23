@@ -59,6 +59,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums.cs" />
+    <Compile Include="IAddPensionerForm.cs" />
+    <Compile Include="ICreatePdfForm.cs" />
+    <Compile Include="IFileController.cs" />
+    <Compile Include="IWindowFormsFactory.cs" />
     <Compile Include="Service\IFileService.cs" />
     <Compile Include="IMainController.cs" />
     <Compile Include="IMainForm.cs" />

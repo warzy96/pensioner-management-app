@@ -39,8 +39,7 @@ namespace PresentationLayer
 
         private void pdfToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO: show create pdf dialog
-            
+            _controller.ShowCreatePdfForm();
         }
     }
 }

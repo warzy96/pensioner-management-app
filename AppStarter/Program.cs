@@ -18,7 +18,7 @@ namespace AppStarter
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(new MainController()));
+            Application.Run(new MainForm(new MainController(new WindowsFormsFactory())));
         }
     }
 }

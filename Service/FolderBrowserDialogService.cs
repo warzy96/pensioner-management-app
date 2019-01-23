@@ -11,13 +11,24 @@ namespace Service
     public class FolderBrowserDialogService
     {
         private readonly string _desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\";
-        public static DialogResult ShowDialog()
+        private static FolderBrowserDialogService _instance;
+        private FolderBrowserDialog _folderBrowserDialog;
+        public static FolderBrowserDialogService GetInstance()
         {
-            var fbd = new FolderBrowserDialog
+            return _instance ?? (_instance = new FolderBrowserDialogService());
+        }
+        public DialogResult ShowDialog()
+        {
+            _folderBrowserDialog = new FolderBrowserDialog
             {
                 RootFolder = Environment.SpecialFolder.DesktopDirectory
             };
-            return fbd.ShowDialog();
+            return _folderBrowserDialog.ShowDialog();
+        }
+
+        public string GetPath()
+        {
+            return _folderBrowserDialog.SelectedPath + "\\";
         }
     }
 }

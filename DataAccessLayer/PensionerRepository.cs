@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using BaseLib;
 using Model;
+using Model.Repositories;
+using NHibernate;
 
 namespace DataAccessLayer
 {
-    public class PensionerRepository : Subject
+    public class PensionerRepository : Subject, IPensionerRepository
     {
-        private static readonly PensionerRepository Instance = null;
-        private readonly List<Pensioner> _pensioners = new List<Pensioner>();
+        private static PensionerRepository _instance;
+        private ISession Session => NHibernateService.OpenSession();
 
         private PensionerRepository()
         {
@@ -17,35 +19,42 @@ namespace DataAccessLayer
 
         public static PensionerRepository GetInstance()
         {
-            return Instance ?? new PensionerRepository();
+            return _instance ?? (_instance = new PensionerRepository());
         }
 
         public int Count()
         {
-            return _pensioners.Count;
-        }
-
-        public Pensioner GetPensioner(int id)
-        {
-            var result = _pensioners.Find(pensioner => pensioner.Id == id);
-            return result;
+            using (var session = Session)
+            {
+                return session.Query<Pensioner>().Count();
+            }
         }
 
         public Pensioner GetPensioner(string oib)
         {
-            var result = _pensioners.Find(pensioner => pensioner.Oib.Equals(oib));
-            return result;
+            using (var session = Session)
+            {
+                return session.Get<Pensioner>(oib);
+            }
+        }
+
+        public Pensioner GetPensioner(int id)
+        {
+            using (var session = Session)
+            {
+                var pensioners = session.Query<Pensioner>().Where(t => t.Id == id).ToList();
+
+                return pensioners.FirstOrDefault();
+            }
         }
 
         public void AddPensioner(int id, string oib, string name, string surname, DateTime dateOfBirth, DateTime membershipStart, string placeOfBirth, string city, string town, string street, int postalCode)
         {
-            using (var session = NHibernateService.OpenSession())
+            using (var session = Session)
             {
                 var transaction = session.BeginTransaction();
                 var address = new Address(city, town, street, postalCode);
                 var pensioner = new Pensioner(id, oib, name, surname, dateOfBirth, membershipStart, placeOfBirth, address);
-
-                _pensioners.Add(pensioner);
 
                 session.Save(pensioner);
                 transaction.Commit();
@@ -54,10 +63,16 @@ namespace DataAccessLayer
             NotifyObservers();
         }
 
-        public void RemovePensioner(int id)
+        public void RemovePensioner(string oib)
         {
-            var pensioner = GetPensioner(id);
-            _pensioners.Remove(pensioner);
+            using (var session = Session)
+            {
+                var transaction = session.BeginTransaction();
+                var pensioner = session.Get<Pensioner>(oib);
+
+                session.Delete(pensioner);
+                transaction.Commit();
+            }
 
             NotifyObservers();
         }
@@ -65,26 +80,31 @@ namespace DataAccessLayer
         public void UpdatePensioner(int id, string oib, string name, string surname, DateTime dateOfBirth,
             DateTime membershipStart, string placeOfBirth, string city, string town, string street, int postalCode)
         {
-            var pensioner = GetPensioner(id);
-            _pensioners.Remove(pensioner);
+            using (var session = Session)
+            {
+                var pensioner = GetPensioner(oib);
+                var transaction = session.BeginTransaction();
 
-            pensioner.Name = name;
-            pensioner.Surname = surname;
-            pensioner.DateOfBirth = dateOfBirth;
-            pensioner.MembershipStart = membershipStart;
-            pensioner.PlaceOfBirth = placeOfBirth;
-            pensioner.CurrentAddress = new Address(city, town, street, postalCode);
+                pensioner.Name = name;
+                pensioner.Surname = surname;
+                pensioner.DateOfBirth = dateOfBirth;
+                pensioner.MembershipStart = membershipStart;
+                pensioner.PlaceOfBirth = placeOfBirth;
+                pensioner.CurrentAddress = new Address(city, town, street, postalCode);
 
-            _pensioners.Add(pensioner);
+                session.Update(pensioner);
+                transaction.Commit();
+            }
         }
 
         public IEnumerable<Pensioner> GetAll()
         {
-            using (var session = NHibernateService.OpenSession())
+            using (var session = Session)
             {
                 var list = session.Query<Pensioner>().ToList();
                 return list;
             }
         }
+
     }
 }

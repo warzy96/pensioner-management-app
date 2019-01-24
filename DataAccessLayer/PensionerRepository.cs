@@ -40,6 +40,14 @@ namespace DataAccessLayer
             }
         }
 
+        public Pensioner GetPensionerWithTransactions(string oib)
+        {
+            using (var session = Session)
+            {
+                return session.Get<Pensioner>(oib);
+            }
+        }
+
         public Pensioner GetPensioner(int id)
         {
             using (var session = Session)
@@ -132,6 +140,21 @@ namespace DataAccessLayer
                     .FetchMany(t => t.Payments)
                     .FetchMany(t => t.RequiredPayments)
                     .ToList();
+            }
+        }
+
+        public Pensioner GetPensionerWithAllAttributes(string oib)
+        {
+            using (var session = Session)
+            {
+                var pensioner = GetPensioner(oib);
+
+                pensioner.RequiredPayments =
+                    session.Query<PaymentType>().Where(t => t.Pensioner.Oib.Equals(pensioner.Oib)).ToList();
+                pensioner.Payments =
+                    session.Query<Payment>().Where(t => t.Pensioner.Oib.Equals(pensioner.Oib)).ToList();
+
+                return pensioner;
             }
         }
     }

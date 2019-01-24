@@ -18,10 +18,10 @@ namespace PresentationLayer
 {
     public partial class AddPensionerForm : Form, IAddPensionerForm
     {
-        private readonly IPensionerRepository _pensionerRepository;
-        public AddPensionerForm(IPensionerRepository pensionerRepository)
+        private readonly IPensionerController _controller;
+        public AddPensionerForm(IPensionerController pensionerController)
         {
-            _pensionerRepository = pensionerRepository;
+            _controller = pensionerController;
 
             InitializeComponent();
         }
@@ -51,12 +51,12 @@ namespace PresentationLayer
                 requiredPayment = new PaymentType(PaymentType.TypeEnum.MutualAidHigh, Model.Properties.Settings.Default.MutualAidLowFee);
             }
 
-            if (_pensionerRepository.GetPensioner(id) != null)
+            if (_controller.GetPensioner(id) != null)
             {
                 MessageBox.Show("Umirovljenik s unesenim brojem knjižice već postoji!");
                 return;
             }
-            _pensionerRepository.AddPensioner(id, oib, name, surname, dateOfBirth, membershipStart, placeOfBirth, city, town, street, postalCode, requiredPayment);
+            _controller.AddPensioner(id, oib, name, surname, dateOfBirth, membershipStart, placeOfBirth, city, town, street, postalCode, requiredPayment);
             Close();
         }
 

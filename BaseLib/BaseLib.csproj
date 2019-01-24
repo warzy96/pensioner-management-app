@@ -63,6 +63,8 @@
     <Compile Include="IAddPensionerForm.cs" />
     <Compile Include="ICreatePdfForm.cs" />
     <Compile Include="IFileController.cs" />
+    <Compile Include="IPensionerController.cs" />
+    <Compile Include="IPensionerDetailsForm.cs" />
     <Compile Include="IWindowFormsFactory.cs" />
     <Compile Include="Service\IFileService.cs" />
     <Compile Include="IMainController.cs" />

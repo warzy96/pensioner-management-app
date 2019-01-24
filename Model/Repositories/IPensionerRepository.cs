@@ -10,6 +10,7 @@ namespace Model.Repositories
     {
         int Count();
         Pensioner GetPensioner(string oib);
+        Pensioner GetPensionerWithTransactions(string oib);
 
         void AddPensioner(int id, string oib, string name, string surname, DateTime dateOfBirth,
             DateTime membershipStart, string placeOfBirth, string city, string town, string street,
@@ -28,5 +29,6 @@ namespace Model.Repositories
         IEnumerable<Pensioner> GetAllWithRequiredPayments();
 
         IEnumerable<Pensioner> GetAllWithAllAttributes();
+        Pensioner GetPensionerWithAllAttributes(string oib);
     }
 }

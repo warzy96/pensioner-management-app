@@ -11,5 +11,6 @@ namespace BaseLib
         void AddPensioner();
         void UpdatePensionerList(IMainForm mainForm);
         void ShowCreatePdfForm();
+        void ShowPensionerDetailsForm(string oib);
     }
 }

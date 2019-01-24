@@ -9,6 +9,7 @@ namespace DataAccessLayer.Mapping
         {
             Map(x => x.Amount).Not.Nullable();
             Id(x => x.Type).CustomType<int>();
+            References(x => x.Pensioner);
         }
     }
 }

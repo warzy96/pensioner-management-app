@@ -32,6 +32,9 @@ namespace PresentationLayer
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.daToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.izvozToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,9 +46,6 @@ namespace PresentationLayer
             this.SurnameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AddressColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.OibColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.daToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.izvozToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +57,7 @@ namespace PresentationLayer
             this.test2ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1365, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(1365, 40);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -67,15 +67,36 @@ namespace PresentationLayer
             this.daToolStripMenuItem,
             this.izvozToolStripMenuItem});
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(123, 38);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(123, 36);
             this.testToolStripMenuItem.Text = "Datoteka";
+            // 
+            // daToolStripMenuItem
+            // 
+            this.daToolStripMenuItem.Name = "daToolStripMenuItem";
+            this.daToolStripMenuItem.Size = new System.Drawing.Size(168, 38);
+            this.daToolStripMenuItem.Text = "Uvoz";
+            // 
+            // izvozToolStripMenuItem
+            // 
+            this.izvozToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pdfToolStripMenuItem});
+            this.izvozToolStripMenuItem.Name = "izvozToolStripMenuItem";
+            this.izvozToolStripMenuItem.Size = new System.Drawing.Size(168, 38);
+            this.izvozToolStripMenuItem.Text = "Izvoz";
+            // 
+            // pdfToolStripMenuItem
+            // 
+            this.pdfToolStripMenuItem.Name = "pdfToolStripMenuItem";
+            this.pdfToolStripMenuItem.Size = new System.Drawing.Size(148, 38);
+            this.pdfToolStripMenuItem.Text = "Pdf";
+            this.pdfToolStripMenuItem.Click += new System.EventHandler(this.pdfToolStripMenuItem_Click);
             // 
             // test2ToolStripMenuItem
             // 
             this.test2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.testicToolStripMenuItem});
             this.test2ToolStripMenuItem.Name = "test2ToolStripMenuItem";
-            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(142, 38);
+            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(142, 36);
             this.test2ToolStripMenuItem.Text = "Transakcije";
             // 
             // testicToolStripMenuItem
@@ -119,11 +140,13 @@ namespace PresentationLayer
             this.AddressColumn,
             this.OibColumn});
             this.pensionerList.Location = new System.Drawing.Point(12, 137);
+            this.pensionerList.MultiSelect = false;
             this.pensionerList.Name = "pensionerList";
             this.pensionerList.Size = new System.Drawing.Size(1341, 515);
             this.pensionerList.TabIndex = 4;
             this.pensionerList.UseCompatibleStateImageBehavior = false;
             this.pensionerList.View = System.Windows.Forms.View.Details;
+            this.pensionerList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pensionerList_MouseClick);
             // 
             // IdColumn
             // 
@@ -149,27 +172,6 @@ namespace PresentationLayer
             // 
             this.OibColumn.Text = "OIB";
             this.OibColumn.Width = 110;
-            // 
-            // daToolStripMenuItem
-            // 
-            this.daToolStripMenuItem.Name = "daToolStripMenuItem";
-            this.daToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
-            this.daToolStripMenuItem.Text = "Uvoz";
-            // 
-            // izvozToolStripMenuItem
-            // 
-            this.izvozToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pdfToolStripMenuItem});
-            this.izvozToolStripMenuItem.Name = "izvozToolStripMenuItem";
-            this.izvozToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
-            this.izvozToolStripMenuItem.Text = "Izvoz";
-            // 
-            // pdfToolStripMenuItem
-            // 
-            this.pdfToolStripMenuItem.Name = "pdfToolStripMenuItem";
-            this.pdfToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
-            this.pdfToolStripMenuItem.Text = "Pdf";
-            this.pdfToolStripMenuItem.Click += new System.EventHandler(this.pdfToolStripMenuItem_Click);
             // 
             // MainForm
             // 

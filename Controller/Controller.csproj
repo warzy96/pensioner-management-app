@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="FileController.cs" />
     <Compile Include="MainController.cs" />
+    <Compile Include="PensionerController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

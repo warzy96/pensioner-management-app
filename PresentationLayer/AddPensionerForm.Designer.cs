@@ -74,7 +74,7 @@
             // PositiveButton
             // 
             this.PositiveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PositiveButton.Location = new System.Drawing.Point(403, 621);
+            this.PositiveButton.Location = new System.Drawing.Point(403, 685);
             this.PositiveButton.Name = "PositiveButton";
             this.PositiveButton.Size = new System.Drawing.Size(150, 60);
             this.PositiveButton.TabIndex = 0;
@@ -85,7 +85,7 @@
             // NegativeButton
             // 
             this.NegativeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NegativeButton.Location = new System.Drawing.Point(692, 621);
+            this.NegativeButton.Location = new System.Drawing.Point(692, 685);
             this.NegativeButton.Name = "NegativeButton";
             this.NegativeButton.Size = new System.Drawing.Size(150, 60);
             this.NegativeButton.TabIndex = 1;
@@ -104,14 +104,14 @@
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1343, 708);
+            this.groupBox1.Size = new System.Drawing.Size(1343, 781);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osobni podaci";
             // 
             // IdTextBox
             // 
-            this.IdTextBox.Location = new System.Drawing.Point(183, 575);
+            this.IdTextBox.Location = new System.Drawing.Point(183, 639);
             this.IdTextBox.Name = "IdTextBox";
             this.IdTextBox.Size = new System.Drawing.Size(573, 31);
             this.IdTextBox.TabIndex = 5;
@@ -121,7 +121,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel2);
-            this.groupBox2.Location = new System.Drawing.Point(6, 260);
+            this.groupBox2.Location = new System.Drawing.Point(6, 324);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1325, 227);
             this.groupBox2.TabIndex = 12;
@@ -226,7 +226,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(8, 578);
+            this.label12.Location = new System.Drawing.Point(8, 642);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(128, 25);
             this.label12.TabIndex = 4;
@@ -395,7 +395,7 @@
             this.groupBox3.Controls.Add(this.LowRadioButton);
             this.groupBox3.Controls.Add(this.NoRadioButton);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Location = new System.Drawing.Point(6, 493);
+            this.groupBox3.Location = new System.Drawing.Point(6, 557);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1319, 68);
             this.groupBox3.TabIndex = 3;
@@ -451,10 +451,10 @@
             // 
             // AddPensionerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1369, 728);
+            this.ClientSize = new System.Drawing.Size(1369, 805);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;

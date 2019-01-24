@@ -23,11 +23,10 @@ namespace Controller
 
         public void AddPensioner()
         {
-            var addPensionerForm = _formsFactory.CreateAddPensionerForm(_pensionerRepository);
-            if (addPensionerForm.ShowAddPensionerDialog())
-            {
-                MessageBox.Show("Član uspješno spremljen!");
-            }
+            var pensionerController = new PensionerController();
+            var addPensionerForm = _formsFactory.CreateAddPensionerForm(pensionerController);
+
+            pensionerController.ShowAddPensionerForm(addPensionerForm);
         }
 
         public void UpdatePensionerList(IMainForm mainForm)
@@ -39,6 +38,14 @@ namespace Controller
         {
             var form = _formsFactory.CreateCreatePdfForm(new FileController());
             form.ShowCreatePdfForm();
+        }
+
+        public void ShowPensionerDetailsForm(string oib)
+        {
+            var pensionerController = new PensionerController();
+            var form = _formsFactory.CreatePensionerDetailsForm(pensionerController, oib);
+
+            pensionerController.ShowPensionerDetailsForm(form);
         }
     }
 }

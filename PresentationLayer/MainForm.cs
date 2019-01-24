@@ -41,5 +41,19 @@ namespace PresentationLayer
         {
             _controller.ShowCreatePdfForm();
         }
+
+        private void pensionerList_ItemActivate(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void pensionerList_MouseClick(object sender, MouseEventArgs e)
+        {
+            var selectedItem = pensionerList.SelectedItems[0];
+
+            var oibItemText = selectedItem.SubItems[4].Text;
+
+            _controller.ShowPensionerDetailsForm(oibItemText);
+        }
     }
 }

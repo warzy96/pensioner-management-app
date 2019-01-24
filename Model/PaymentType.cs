@@ -16,6 +16,7 @@ namespace Model
             MutualAidHigh
         }
         
+        public virtual Pensioner Pensioner { get; set; }
         public virtual TypeEnum Type { get; set; }
         public virtual double Amount { get; set; }
 

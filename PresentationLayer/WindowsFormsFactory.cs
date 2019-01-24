@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BaseLib;
+using Model;
 using Model.Repositories;
 
 namespace PresentationLayer
@@ -17,9 +18,15 @@ namespace PresentationLayer
             return createPdfForm;
         }
 
-        public IAddPensionerForm CreateAddPensionerForm(IPensionerRepository repository)
+        public IAddPensionerForm CreateAddPensionerForm(IPensionerController controller)
         {
-            return new AddPensionerForm(repository);
+            return new AddPensionerForm(controller);
         }
+
+        public IPensionerDetailsForm CreatePensionerDetailsForm(IPensionerController controller, string oib)
+        {
+            return new PensionerDetailsForm(controller, oib);
+        }
+        
     }
 }

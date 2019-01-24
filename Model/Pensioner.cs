@@ -51,6 +51,7 @@ namespace Model
             };
         }
 
+        //for future use with importing data from file
         public Pensioner(int id, string oib, string name, string surname, DateTime dateOfBirth,
             DateTime membershipStart, string placeOfBirth, Address currentAddress,
             IList<Payment> payments, IList<PaymentType> requiredPayments) :
@@ -58,6 +59,44 @@ namespace Model
         {
             Payments = payments;
             RequiredPayments = requiredPayments;
+        }
+
+        public Pensioner(int id, string oib, string name, string surname, DateTime dateOfBirth, DateTime membershipStart,
+            string placeOfBirth, Address currentAddress, PaymentType requiredPayment) :
+            this(id, oib, name, surname, dateOfBirth, membershipStart, placeOfBirth, currentAddress)
+        {
+            if (requiredPayment != null)
+            {
+                RequiredPayments.Add(requiredPayment);
+            }
+        }
+
+        public virtual string GetFullName()
+        {
+            return Name + " " + Surname;
+        }
+
+        public virtual string GetMembershipRequiredPaymentString()
+        {
+            return RequiredPayments.Any(requiredPayment => requiredPayment.Type == PaymentType.TypeEnum.Membership) ? Settings.Default.MembershipFee.ToString() : PaymentType.Empty;
+        }
+
+        public virtual string GetMutualAidRequiredPaymentString()
+        {
+            foreach (var requiredPayment in RequiredPayments)
+            {
+                if (requiredPayment.Type == PaymentType.TypeEnum.MutualAidHigh)
+                {
+                    return Settings.Default.MutualAidHighFee.ToString();
+                }
+
+                if (requiredPayment.Type == PaymentType.TypeEnum.MutualAidLow)
+                {
+                    return Settings.Default.MutualAidLowFee.ToString();
+                }
+            }
+
+            return PaymentType.Empty;
         }
     }
 }

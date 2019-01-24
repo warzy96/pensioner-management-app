@@ -8,6 +8,6 @@ namespace BaseLib
 {
     public interface ICreatePdfForm
     {
-        bool ShowCreatePdfForm();
+        void ShowCreatePdfForm();
     }
 }

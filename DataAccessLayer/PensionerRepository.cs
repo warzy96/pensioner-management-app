@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using BaseLib;
 using Model;
 using Model.Repositories;
 using NHibernate;
+using NHibernate.Linq;
 
 namespace DataAccessLayer
 {
@@ -48,13 +50,14 @@ namespace DataAccessLayer
             }
         }
 
-        public void AddPensioner(int id, string oib, string name, string surname, DateTime dateOfBirth, DateTime membershipStart, string placeOfBirth, string city, string town, string street, int postalCode)
+        public void AddPensioner(int id, string oib, string name, string surname, DateTime dateOfBirth, DateTime membershipStart,
+            string placeOfBirth, string city, string town, string street, int postalCode, PaymentType requiredPayment)
         {
             using (var session = Session)
             {
                 var transaction = session.BeginTransaction();
                 var address = new Address(city, town, street, postalCode);
-                var pensioner = new Pensioner(id, oib, name, surname, dateOfBirth, membershipStart, placeOfBirth, address);
+                var pensioner = new Pensioner(id, oib, name, surname, dateOfBirth, membershipStart, placeOfBirth, address, requiredPayment);
 
                 session.Save(pensioner);
                 transaction.Commit();
@@ -101,10 +104,35 @@ namespace DataAccessLayer
         {
             using (var session = Session)
             {
-                var list = session.Query<Pensioner>().ToList();
-                return list;
+                return session.Query<Pensioner>().ToList();
             }
         }
 
+        public IEnumerable<Pensioner> GetAllWithPayments()
+        {
+            using (var session = Session)
+            {
+                return session.Query<Pensioner>().FetchMany(t => t.Payments).ToList();
+            }
+        }
+
+        public IEnumerable<Pensioner> GetAllWithRequiredPayments()
+        {
+            using (var session = Session)
+            {
+                return session.Query<Pensioner>().FetchMany(t => t.RequiredPayments).ToList();
+            }
+        }
+
+        public IEnumerable<Pensioner> GetAllWithAllAttributes()
+        {
+            using (var session = Session)
+            {
+                return session.Query<Pensioner>()
+                    .FetchMany(t => t.Payments)
+                    .FetchMany(t => t.RequiredPayments)
+                    .ToList();
+            }
+        }
     }
 }

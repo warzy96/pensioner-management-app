@@ -24,17 +24,18 @@ namespace PresentationLayer
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            var attributeList = new List<Enums.OutputAttributes>();
-            if (OIBCheckBox.Checked)
+            var attributeList = new List<Enums.OutputAttributes>
             {
-                attributeList.Add(Enums.OutputAttributes.OIB);
-            }
-
+                Enums.OutputAttributes.FullName
+            };
             if (IdCheckBox.Checked)
             {
                 attributeList.Add(Enums.OutputAttributes.Id);
             }
-
+            if (OIBCheckBox.Checked)
+            {
+                attributeList.Add(Enums.OutputAttributes.OIB);
+            }
             if (PlaceOfResidenceCheckBox.Checked)
             {
                 attributeList.Add(Enums.OutputAttributes.PlaceOfResidence);
@@ -58,9 +59,9 @@ namespace PresentationLayer
             _fileController.CreateFile(attributeList);
         }
 
-        public bool ShowCreatePdfForm()
+        public void ShowCreatePdfForm()
         {
-            return ShowDialog() == DialogResult.OK;
+            ShowDialog();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using BaseLib;
 using DataAccessLayer;
 using Model.Repositories;
@@ -23,7 +24,10 @@ namespace Controller
         public void AddPensioner()
         {
             var addPensionerForm = _formsFactory.CreateAddPensionerForm(_pensionerRepository);
-            addPensionerForm.ShowAddPensionerDialog();
+            if (addPensionerForm.ShowAddPensionerDialog())
+            {
+                MessageBox.Show("Član uspješno spremljen!");
+            }
         }
 
         public void UpdatePensionerList(IMainForm mainForm)
@@ -34,10 +38,7 @@ namespace Controller
         public void ShowCreatePdfForm()
         {
             var form = _formsFactory.CreateCreatePdfForm(new FileController());
-            if (form.ShowCreatePdfForm())
-            {
-                
-            }
+            form.ShowCreatePdfForm();
         }
     }
 }

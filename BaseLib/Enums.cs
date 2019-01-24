@@ -8,6 +8,7 @@ namespace BaseLib
 {
     public static class Enums
     {
+        public const string FullName = "FullName";
         public const string OibEnumName = "OIB";
         public const string IdEnumName = "Id";
         public const string PlaceOfResidenceEnumName = "PlaceOfResidence";
@@ -15,7 +16,7 @@ namespace BaseLib
         public const string MembershipEnumName = "Membership";
         public const string MutualAidEnumName = "MutualAid";
 
-        public const string NameAndSurname_HR = "Ime i prezime";
+        public const string FullName_HR = "Ime i prezime";
         public const string OibEnumName_HR = "OIB";
         public const string IdEnumName_HR = "Broj knjižice";
         public const string PlaceOfResidenceEnumName_HR = "Adresa";
@@ -29,7 +30,8 @@ namespace BaseLib
             PlaceOfResidence,
             CityAndZipCode,
             Membership,
-            MutualAid
+            MutualAid,
+            FullName
         }
 
         public enum OutputFileType

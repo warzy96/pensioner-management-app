@@ -21,7 +21,7 @@ namespace Service
         {
             _folderBrowserDialog = new FolderBrowserDialog
             {
-                RootFolder = Environment.SpecialFolder.DesktopDirectory
+                SelectedPath = _desktopPath
             };
             return _folderBrowserDialog.ShowDialog();
         }

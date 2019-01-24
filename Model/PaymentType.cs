@@ -8,6 +8,7 @@ namespace Model
 {
     public class PaymentType
     {
+        public const string Empty = "-";
         public enum TypeEnum
         {
             Membership = 1, 

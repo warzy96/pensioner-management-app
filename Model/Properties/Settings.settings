@@ -8,7 +8,7 @@
     <Setting Name="MutualAidLowFee" Type="System.Double" Scope="User">
       <Value Profile="(Default)">40</Value>
     </Setting>
-    <Setting Name="MutualAidHighFee" Type="System.Decimal" Scope="User">
+    <Setting Name="MutualAidHighFee" Type="System.Double" Scope="User">
       <Value Profile="(Default)">80</Value>
     </Setting>
   </Settings>

@@ -4,6 +4,6 @@ namespace BaseLib.Service
 {
     public interface IOutputFileService : IFileService
     {
-        void OutputFile<T>(IEnumerable<T> attributes);
+        bool OutputFile<T>(IEnumerable<T> attributes);
     }
 }

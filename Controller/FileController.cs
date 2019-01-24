@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using BaseLib;
 using BaseLib.Service;
 using Service;
@@ -19,7 +20,10 @@ namespace Controller
 
         public void CreateFile<T>(IEnumerable<T> attributesList)
         {
-            _fileService.OutputFile(attributesList);
+            if (_fileService.OutputFile(attributesList))
+            {
+                MessageBox.Show("Datoteka uspješno spremljena!");
+            }
         }
     }
 }

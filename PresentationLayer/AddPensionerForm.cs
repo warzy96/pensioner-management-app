@@ -12,6 +12,7 @@ using BaseLib;
 using DataAccessLayer;
 using Model;
 using Model.Repositories;
+using NHibernate.Cfg;
 
 namespace PresentationLayer
 {
@@ -29,23 +30,33 @@ namespace PresentationLayer
         {
             if (!ValidateChildren()) return;
             var id = int.Parse(IdTextBox.Text);
-            var name = NameTextBox.Text;
-            var surname = SurnameTextBox.Text;
+            var name = NameTextBox.Text.Trim();
+            var surname = SurnameTextBox.Text.Trim();
             var dateOfBirth = DateOfBirthPicker.Value;
             var membershipStart = MemberFromDateTimePicker.Value;
-            var oib = OIBTextBox.Text;
-            var placeOfBirth = PlaceOfBirthTextBox.Text;
-            var city = CityTextBox.Text;
-            var town = TownTextBox.Text;
-            var street = StreetTextBox.Text;
+            var oib = OIBTextBox.Text.Trim();
+            var placeOfBirth = PlaceOfBirthTextBox.Text.Trim();
+            var city = CityTextBox.Text.Trim();
+            var town = TownTextBox.Text.Trim();
+            var street = StreetTextBox.Text.Trim();
             var postalCode = int.Parse(PostalCodeTextBox.Text);
+
+            PaymentType requiredPayment = null;
+            if (HighRadioButton.Checked)
+            {
+                requiredPayment = new PaymentType(PaymentType.TypeEnum.MutualAidHigh, Model.Properties.Settings.Default.MutualAidHighFee);
+            }
+            else if(LowRadioButton.Checked)
+            {
+                requiredPayment = new PaymentType(PaymentType.TypeEnum.MutualAidHigh, Model.Properties.Settings.Default.MutualAidLowFee);
+            }
 
             if (_pensionerRepository.GetPensioner(id) != null)
             {
                 MessageBox.Show("Umirovljenik s unesenim brojem knjižice već postoji!");
                 return;
             }
-            _pensionerRepository.AddPensioner(id, oib, name, surname, dateOfBirth, membershipStart, placeOfBirth, city, town, street, postalCode);
+            _pensionerRepository.AddPensioner(id, oib, name, surname, dateOfBirth, membershipStart, placeOfBirth, city, town, street, postalCode, requiredPayment);
             Close();
         }
 
@@ -82,7 +93,7 @@ namespace PresentationLayer
         private void HandleValidation(Control textBox, string message, CancelEventArgs e)
         {
             textBox.Text = textBox.Text.Trim();
-            if (!textBox.Text.All(char.IsLetter) || string.IsNullOrEmpty(textBox.Text))
+            if (textBox.Text.Any(char.IsNumber) || string.IsNullOrEmpty(textBox.Text))
             {
                 errorProvider.SetError(textBox, message);
                 e.Cancel = true;
@@ -113,7 +124,7 @@ namespace PresentationLayer
 
         private void StreetTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar));
+            e.Handled = !(e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || e.KeyChar == (char)Keys.Tab || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar));
         }
 
         private void StreetTextBox_Validating(object sender, CancelEventArgs e)

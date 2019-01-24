@@ -50,9 +50,9 @@ namespace Model.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("80")]
-        public decimal MutualAidHighFee {
+        public double MutualAidHighFee {
             get {
-                return ((decimal)(this["MutualAidHighFee"]));
+                return ((double)(this["MutualAidHighFee"]));
             }
             set {
                 this["MutualAidHighFee"] = value;

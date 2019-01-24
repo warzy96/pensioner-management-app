@@ -12,7 +12,8 @@ namespace Model.Repositories
         Pensioner GetPensioner(string oib);
 
         void AddPensioner(int id, string oib, string name, string surname, DateTime dateOfBirth,
-            DateTime membershipStart, string placeOfBirth, string city, string town, string street, int postalCode);
+            DateTime membershipStart, string placeOfBirth, string city, string town, string street,
+            int postalCode, PaymentType requiredPayment);
         void RemovePensioner(string oib);
 
         void UpdatePensioner(int id, string oib, string name, string surname, DateTime dateOfBirth,
@@ -21,5 +22,11 @@ namespace Model.Repositories
         IEnumerable<Pensioner> GetAll();
 
         Pensioner GetPensioner(int id);
+
+        IEnumerable<Pensioner> GetAllWithPayments();
+
+        IEnumerable<Pensioner> GetAllWithRequiredPayments();
+
+        IEnumerable<Pensioner> GetAllWithAllAttributes();
     }
 }

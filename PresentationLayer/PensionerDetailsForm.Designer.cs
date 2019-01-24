@@ -64,6 +64,7 @@
             this.ForYearColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -73,7 +74,7 @@
             // NegativeButton
             // 
             this.NegativeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NegativeButton.Location = new System.Drawing.Point(802, 654);
+            this.NegativeButton.Location = new System.Drawing.Point(606, 681);
             this.NegativeButton.Name = "NegativeButton";
             this.NegativeButton.Size = new System.Drawing.Size(150, 60);
             this.NegativeButton.TabIndex = 1;
@@ -185,7 +186,7 @@
             // PositiveButton
             // 
             this.PositiveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PositiveButton.Location = new System.Drawing.Point(465, 654);
+            this.PositiveButton.Location = new System.Drawing.Point(181, 681);
             this.PositiveButton.Name = "PositiveButton";
             this.PositiveButton.Size = new System.Drawing.Size(150, 60);
             this.PositiveButton.TabIndex = 0;
@@ -308,6 +309,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.OIBTextBox.Location = new System.Drawing.Point(175, 91);
             this.OIBTextBox.Name = "OIBTextBox";
+            this.OIBTextBox.ReadOnly = true;
             this.OIBTextBox.Size = new System.Drawing.Size(493, 31);
             this.OIBTextBox.TabIndex = 4;
             // 
@@ -335,6 +337,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.DeleteButton);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.IdTextBox);
             this.groupBox1.Controls.Add(this.NegativeButton);
@@ -344,7 +347,7 @@
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1343, 720);
+            this.groupBox1.Size = new System.Drawing.Size(1343, 747);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osobni podaci";
@@ -352,7 +355,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.TransactionsListView);
-            this.groupBox2.Location = new System.Drawing.Point(13, 371);
+            this.groupBox2.Location = new System.Drawing.Point(13, 398);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1320, 277);
             this.groupBox2.TabIndex = 7;
@@ -375,14 +378,17 @@
             // TypeTransactionHeader
             // 
             this.TypeTransactionHeader.Text = "Tip";
+            this.TypeTransactionHeader.Width = 150;
             // 
             // AmountColumnHeader
             // 
             this.AmountColumnHeader.Text = "Iznos";
+            this.AmountColumnHeader.Width = 150;
             // 
             // ForYearColumnHeader
             // 
             this.ForYearColumnHeader.Text = "Za godinu";
+            this.ForYearColumnHeader.Width = 150;
             // 
             // IdTextBox
             // 
@@ -431,17 +437,28 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1324, 222);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
+            // DeleteButton
+            // 
+            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteButton.Location = new System.Drawing.Point(1074, 681);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(150, 60);
+            this.DeleteButton.TabIndex = 4;
+            this.DeleteButton.Text = "Obriši";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
             // PensionerDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1369, 729);
+            this.ClientSize = new System.Drawing.Size(1369, 759);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1395, 800);
+            this.MaximumSize = new System.Drawing.Size(1395, 830);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1395, 800);
+            this.MinimumSize = new System.Drawing.Size(1395, 830);
             this.Name = "PensionerDetailsForm";
             this.Text = "Detalji";
             this.groupBox3.ResumeLayout(false);
@@ -493,5 +510,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader AmountColumnHeader;
         private System.Windows.Forms.ColumnHeader ForYearColumnHeader;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }

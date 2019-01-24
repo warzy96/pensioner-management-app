@@ -15,5 +15,7 @@ namespace BaseLib
         void AddPensioner(int addPensionerForm, string oib, string name, string surname, DateTime dateOfBirth,
             DateTime membershipStart, string placeOfBirth, string city, string town, string street, int postalCode,
             PaymentType requiredPayment);
+
+        void RemovePensioner(string oib);
     }
 }

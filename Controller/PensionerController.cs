@@ -40,6 +40,11 @@ namespace Controller
                 town, street, postalCode, requiredPayment);
         }
 
+        public void RemovePensioner(string oib)
+        {
+            _pensionerRepository.RemovePensioner(oib);
+        }
+
         public void ShowPensionerDetailsForm(IPensionerDetailsForm form)
         {
             form.ShowPensionerDetailsForm();

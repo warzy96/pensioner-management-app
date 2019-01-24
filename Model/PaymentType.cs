@@ -15,7 +15,14 @@ namespace Model
             MutualAidLow,
             MutualAidHigh
         }
-        
+
+        public static readonly Dictionary<TypeEnum, string> TypeEnumNames = new Dictionary<TypeEnum,string>()
+        {
+            {TypeEnum.Membership, "Članarina"},
+            {TypeEnum.MutualAidLow, "Niža uzajamna pomoć"},
+            {TypeEnum.MutualAidHigh, "Viša uzajamna pomoć"}
+        };
+
         public virtual Pensioner Pensioner { get; set; }
         public virtual TypeEnum Type { get; set; }
         public virtual double Amount { get; set; }

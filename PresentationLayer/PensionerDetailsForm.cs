@@ -45,6 +45,17 @@ namespace PresentationLayer
             PlaceOfBirthTextBox.Text = _pensioner.PlaceOfBirth;
             LowRadioButton.Checked = _pensioner.RequiredPayments.Any(t => t.Type == PaymentType.TypeEnum.MutualAidLow);
             HighRadioButton.Checked = _pensioner.RequiredPayments.Any(t => t.Type == PaymentType.TypeEnum.MutualAidHigh);
+
+            foreach (var payment in _pensioner.Payments)
+            {
+                var listViewItem = new ListViewItem(payment.Id.ToString());
+                PaymentType.TypeEnumNames.TryGetValue(payment.Type.Type, out var paymentName);
+                listViewItem.SubItems.Add(paymentName);
+                listViewItem.SubItems.Add(payment.Type.Amount.ToString());
+                listViewItem.SubItems.Add(payment.ForYear.Year.ToString());
+
+                TransactionsListView.Items.Add(listViewItem);
+            }
         }
 
         public bool ShowPensionerDetailsForm()
@@ -52,6 +63,18 @@ namespace PresentationLayer
             if (_pensioner != null) return ShowDialog() == DialogResult.OK;
             MessageBox.Show("Umirovljenik ne postoji!");
             return false;
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            var confirmMessageBox = MessageBox.Show("Jeste li sigurni da želite obrisati člana?", "Potvrda brisanja",
+                MessageBoxButtons.YesNo);
+
+            if (confirmMessageBox == DialogResult.OK)
+            {
+                _controller.RemovePensioner(OIBTextBox.Text);
+                Close();
+            }
         }
     }
 }

@@ -222,6 +222,14 @@ namespace DataAccessLayer
             {
                 var transaction = session.BeginTransaction();
 
+
+                var transactionTypesToDelete = session.Query<PaymentType>().Where(t =>
+                    t.Pensioner.Id == pensioner.Id && t.Type != PaymentType.TypeEnum.Membership).ToList();
+                foreach (var paymentType in transactionTypesToDelete)
+                {
+                    session.Delete(paymentType);
+                }
+
                 session.Update(pensioner);
 
                 transaction.Commit();

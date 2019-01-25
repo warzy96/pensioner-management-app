@@ -14,8 +14,8 @@ namespace DataAccessLayer.Mapping
             Map(x => x.PlaceOfBirth);
             Map(x => x.Surname).Not.Nullable();
             Map(x => x.MembershipStart).Not.Nullable();
-            HasMany(x => x.Payments).Cascade.AllDeleteOrphan();
-            HasMany(x => x.RequiredPayments).Cascade.AllDeleteOrphan();
+            HasMany(x => x.Payments).Inverse().Cascade.AllDeleteOrphan();
+            HasMany(x => x.RequiredPayments).Inverse().Cascade.AllDeleteOrphan();
             Component(x => x.CurrentAddress);
         }
     }

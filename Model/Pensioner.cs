@@ -29,7 +29,7 @@ namespace Model
             Payments = new List<Payment>();
             RequiredPayments = new List<PaymentType>
             {
-                new PaymentType(PaymentType.TypeEnum.Membership, Settings.Default.MembershipFee)
+                new PaymentType(PaymentType.TypeEnum.Membership, Settings.Default.MembershipFee, this)
             };
         }
 
@@ -47,7 +47,7 @@ namespace Model
             Payments = new List<Payment>();
             RequiredPayments = new List<PaymentType>
             {
-                new PaymentType(PaymentType.TypeEnum.Membership, Settings.Default.MembershipFee)
+                new PaymentType(PaymentType.TypeEnum.Membership, Settings.Default.MembershipFee, this)
             };
         }
 
@@ -70,6 +70,17 @@ namespace Model
                 requiredPayment.Pensioner = this;
                 RequiredPayments.Add(requiredPayment);
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            var pensioner = (Pensioner) obj;
+            return pensioner != null && pensioner.Id == Id && pensioner.Oib.Equals(Oib);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
         public virtual string GetFullName()

@@ -34,10 +34,17 @@ namespace Model
         {
 
         }
+
         public PaymentType(TypeEnum type, double amount)
         {
             Type = type;
             Amount = amount;
+        }
+        public PaymentType(TypeEnum type, double amount, Pensioner pensioner)
+        {
+            Type = type;
+            Amount = amount;
+            Pensioner = pensioner;
         }
     }
 }

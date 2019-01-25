@@ -96,11 +96,11 @@ namespace PresentationLayer
             PaymentType requiredPayment = null;
             if (HighRadioButton.Checked)
             {
-                requiredPayment = new PaymentType(PaymentType.TypeEnum.MutualAidHigh, Model.Properties.Settings.Default.MutualAidHighFee);
+                requiredPayment = new PaymentType(PaymentType.TypeEnum.MutualAidHigh, Model.Properties.Settings.Default.MutualAidHighFee, _pensioner);
             }
             else if (LowRadioButton.Checked)
             {
-                requiredPayment = new PaymentType(PaymentType.TypeEnum.MutualAidHigh, Model.Properties.Settings.Default.MutualAidLowFee);
+                requiredPayment = new PaymentType(PaymentType.TypeEnum.MutualAidLow, Model.Properties.Settings.Default.MutualAidLowFee, _pensioner);
             }
 
             _pensioner.RequiredPayments.Remove(_pensioner.RequiredPayments.FirstOrDefault(t =>

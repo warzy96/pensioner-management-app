@@ -85,7 +85,7 @@
     <Compile Include="Mapping\PaymentTypeComponent.cs" />
     <Compile Include="Mapping\PaymentTypeMap.cs" />
     <Compile Include="Mapping\PensionerMap.cs" />
-    <Compile Include="NHibernateHelper.cs" />
+    <Compile Include="NHibernateService.cs" />
     <Compile Include="PensionerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

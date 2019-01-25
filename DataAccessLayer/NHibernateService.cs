@@ -11,7 +11,7 @@ using NHibernate.Tool.hbm2ddl;
 
 namespace DataAccessLayer
 {
-    internal class NHibernateService
+    internal static class NHibernateService
     {
         private static ISessionFactory _sessionFactory;
         private static Configuration _configuration;
@@ -19,7 +19,6 @@ namespace DataAccessLayer
 
         public static ISession OpenSession()
         {
-            //Open and return the nhibernate session
             return SessionFactory.OpenSession();
         }
 

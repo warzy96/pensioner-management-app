@@ -7,10 +7,10 @@ namespace DataAccessLayer.Mapping
     {
         public PaymentTypeMap()
         {
+            Id(x => x.Id).GeneratedBy.Native();
             Map(x => x.Amount).Not.Nullable();
             Map(x => x.Type).CustomType<int>();
-            References(x => x.Pensioner);
-            Id(x => x.Id).GeneratedBy.Native();
+            References(x => x.Pensioner, "Pensioner_Id");
         }
     }
 }

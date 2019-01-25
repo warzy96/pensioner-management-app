@@ -65,6 +65,7 @@ namespace DataAccessLayer
             using (var session = Session)
             {
                 var transaction = session.BeginTransaction();
+
                 var address = new Address(city, town, street, postalCode);
                 var pensioner = new Pensioner(id, oib, name, surname, dateOfBirth, membershipStart, placeOfBirth, address, requiredPayment);
 
@@ -94,8 +95,9 @@ namespace DataAccessLayer
         {
             using (var session = Session)
             {
-                var pensioner = GetPensioner(oib);
                 var transaction = session.BeginTransaction();
+
+                var pensioner = GetPensioner(oib);
 
                 pensioner.Name = name;
                 pensioner.Surname = surname;
@@ -209,6 +211,18 @@ namespace DataAccessLayer
                     pensioner.Payments.Add(payment);
                     session.Update(pensioner); 
                 }
+
+                transaction.Commit();
+            }
+        }
+
+        public void UpdatePensioner(Pensioner pensioner)
+        {
+            using (var session = Session)
+            {
+                var transaction = session.BeginTransaction();
+
+                session.Update(pensioner);
 
                 transaction.Commit();
             }

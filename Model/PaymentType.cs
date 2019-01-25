@@ -25,6 +25,7 @@ namespace Model
             {TypeEnum.MutualAid, "Uzajamna pomoć" }
         };
 
+        public virtual int Id { get; set; }
         public virtual Pensioner Pensioner { get; set; }
         public virtual TypeEnum Type { get; set; }
         public virtual double Amount { get; set; }

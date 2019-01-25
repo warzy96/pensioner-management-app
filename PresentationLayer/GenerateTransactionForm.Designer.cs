@@ -80,7 +80,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button AcceptButton;
+        private new System.Windows.Forms.Button AcceptButton;
         private System.Windows.Forms.DateTimePicker YearPicker;
         private System.Windows.Forms.Label label1;
     }

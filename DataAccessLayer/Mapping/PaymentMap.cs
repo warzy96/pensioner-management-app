@@ -7,11 +7,11 @@ namespace DataAccessLayer.Mapping
     {
         public PaymentMap()
         {
-            References(x => x.Pensioner);
             Id(x => x.Id).GeneratedBy.Native();
+            References(x => x.Pensioner);
             Component(x => x.Type);
-            Map(x => x.ForYear);
-            Map(x => x.IsPayed);
+            Map(x => x.ForYear).Not.Nullable();
+            Map(x => x.IsPayed).Not.Nullable();
         }
     }
 }

@@ -32,5 +32,6 @@ namespace Model.Repositories
         Pensioner GetPensionerWithAllAttributes(string oib);
         void GenerateMutualAidTransactions(DateTime forYear);
         void GenerateMembershipTransactions(DateTime forYear);
+        void UpdatePensioner(Pensioner pensioner);
     }
 }

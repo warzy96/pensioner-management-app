@@ -45,6 +45,11 @@ namespace Controller
             _pensionerRepository.RemovePensioner(oib);
         }
 
+        public void UpdatePensioner(Pensioner pensioner)
+        {
+            _pensionerRepository.UpdatePensioner(pensioner);
+        }
+
         public void ShowPensionerDetailsForm(IPensionerDetailsForm form)
         {
             form.ShowPensionerDetailsForm();

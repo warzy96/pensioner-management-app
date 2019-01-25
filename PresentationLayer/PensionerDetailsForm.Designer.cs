@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.NegativeButton = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.HighRadioButton = new System.Windows.Forms.RadioButton();
@@ -66,10 +67,12 @@
             this.IsPayedColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // NegativeButton
@@ -152,6 +155,8 @@
             this.PostalCodeTextBox.Name = "PostalCodeTextBox";
             this.PostalCodeTextBox.Size = new System.Drawing.Size(493, 31);
             this.PostalCodeTextBox.TabIndex = 6;
+            this.PostalCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PostalCodeTextBox_KeyPress);
+            this.PostalCodeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.PostalCodeTextBox_Validating);
             // 
             // CityTextBox
             // 
@@ -159,6 +164,7 @@
             this.CityTextBox.Name = "CityTextBox";
             this.CityTextBox.Size = new System.Drawing.Size(493, 31);
             this.CityTextBox.TabIndex = 7;
+            this.CityTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.CityTextBox_Validating);
             // 
             // label10
             // 
@@ -175,6 +181,8 @@
             this.StreetTextBox.Name = "StreetTextBox";
             this.StreetTextBox.Size = new System.Drawing.Size(493, 31);
             this.StreetTextBox.TabIndex = 5;
+            this.StreetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StreetTextBox_KeyPress);
+            this.StreetTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.StreetTextBox_Validating);
             // 
             // label7
             // 
@@ -194,6 +202,7 @@
             this.PositiveButton.TabIndex = 0;
             this.PositiveButton.Text = "Spremi";
             this.PositiveButton.UseVisualStyleBackColor = true;
+            this.PositiveButton.Click += new System.EventHandler(this.PositiveButton_Click);
             // 
             // label9
             // 
@@ -210,6 +219,7 @@
             this.TownTextBox.Name = "TownTextBox";
             this.TownTextBox.Size = new System.Drawing.Size(493, 31);
             this.TownTextBox.TabIndex = 4;
+            this.TownTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TownTextBox_Validating);
             // 
             // MemberFromDateTimePicker
             // 
@@ -265,6 +275,7 @@
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(493, 31);
             this.NameTextBox.TabIndex = 0;
+            this.NameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.NameTextBox_Validating);
             // 
             // label1
             // 
@@ -284,6 +295,7 @@
             this.PlaceOfBirthTextBox.Name = "PlaceOfBirthTextBox";
             this.PlaceOfBirthTextBox.Size = new System.Drawing.Size(493, 31);
             this.PlaceOfBirthTextBox.TabIndex = 9;
+            this.PlaceOfBirthTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.PlaceOfBirthTextBox_Validating);
             // 
             // SurnameTextBox
             // 
@@ -293,6 +305,7 @@
             this.SurnameTextBox.Name = "SurnameTextBox";
             this.SurnameTextBox.Size = new System.Drawing.Size(493, 31);
             this.SurnameTextBox.TabIndex = 1;
+            this.SurnameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.SurnameTextBox_Validating);
             // 
             // label4
             // 
@@ -458,6 +471,11 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1324, 222);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
+            // 
             // PensionerDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -479,6 +497,7 @@
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -518,10 +537,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView TransactionsListView;
         private System.Windows.Forms.ColumnHeader TypeTransactionHeader;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader AmountColumnHeader;
         private System.Windows.Forms.ColumnHeader ForYearColumnHeader;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.ColumnHeader IsPayedColumn;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

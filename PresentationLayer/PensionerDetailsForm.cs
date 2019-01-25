@@ -78,5 +78,129 @@ namespace PresentationLayer
                 Close();
             }
         }
+
+        private void PositiveButton_Click(object sender, EventArgs e)
+        {
+            if (!ValidateChildren()) return;
+            
+            _pensioner.Name = NameTextBox.Text.Trim();
+            _pensioner.Surname = SurnameTextBox.Text.Trim();
+            _pensioner.DateOfBirth = DateOfBirthPicker.Value;
+            _pensioner.MembershipStart = MemberFromDateTimePicker.Value;
+            _pensioner.PlaceOfBirth = PlaceOfBirthTextBox.Text.Trim();
+            _pensioner.CurrentAddress.City = CityTextBox.Text.Trim();
+            _pensioner.CurrentAddress.Town = TownTextBox.Text.Trim();
+            _pensioner.CurrentAddress.Street = StreetTextBox.Text.Trim();
+            _pensioner.CurrentAddress.PostalCode = int.Parse(PostalCodeTextBox.Text);
+
+            PaymentType requiredPayment = null;
+            if (HighRadioButton.Checked)
+            {
+                requiredPayment = new PaymentType(PaymentType.TypeEnum.MutualAidHigh, Model.Properties.Settings.Default.MutualAidHighFee);
+            }
+            else if (LowRadioButton.Checked)
+            {
+                requiredPayment = new PaymentType(PaymentType.TypeEnum.MutualAidHigh, Model.Properties.Settings.Default.MutualAidLowFee);
+            }
+
+            _pensioner.RequiredPayments.Remove(_pensioner.RequiredPayments.FirstOrDefault(t =>
+                t.Type == PaymentType.TypeEnum.MutualAidHigh || t.Type == PaymentType.TypeEnum.MutualAidLow));
+            _pensioner.RequiredPayments.Add(requiredPayment);
+
+            _controller.UpdatePensioner(_pensioner);
+            Close();
+        }
+
+        private void NameTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            HandleValidation(NameTextBox, "Polje ne smije biti prazno! Dozvoljena su samo slova!", e);
+        }
+
+        private void SurnameTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            HandleValidation(SurnameTextBox, "Polje ne smije biti prazno! Dozvoljena su samo slova!", e);
+        }
+
+        private void PlaceOfBirthTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            HandleValidation(PlaceOfBirthTextBox, "Polje ne smije biti prazno! Dozvoljena su samo slova!", e);
+        }
+
+        private void TownTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            HandleValidation(TownTextBox, "Polje ne smije biti prazno! Dozvoljena su samo slova!", e);
+        }
+
+        private void CityTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            HandleValidation(CityTextBox, "Polje ne smije biti prazno! Dozvoljena su samo slova!", e);
+        }
+
+        private void HandleValidation(Control textBox, string message, CancelEventArgs e)
+        {
+            textBox.Text = textBox.Text.Trim();
+            if (textBox.Text.Any(char.IsNumber) || string.IsNullOrEmpty(textBox.Text))
+            {
+                errorProvider.SetError(textBox, message);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(textBox, null);
+            }
+        }
+
+        private void PostalCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(e.KeyChar == (char)Keys.Back || char.IsNumber(e.KeyChar));
+        }
+
+        private void PostalCodeTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (PostalCodeTextBox.Text.Length != 5)
+            {
+                errorProvider.SetError(PostalCodeTextBox, "Nije važeći poštanski broj!");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(PostalCodeTextBox, null);
+            }
+        }
+        private void StreetTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || e.KeyChar == (char)Keys.Tab || char.IsLetter(e.KeyChar) || char.IsNumber(e.KeyChar));
+        }
+
+        private void StreetTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            StreetTextBox.Text = StreetTextBox.Text.Trim();
+            if (string.IsNullOrEmpty(StreetTextBox.Text))
+            {
+                errorProvider.SetError(StreetTextBox, "Polje ne smije biti prazno!");
+                e.Cancel = true;
+                return;
+            }
+            errorProvider.SetError(StreetTextBox, null);
+
+            var array = StreetTextBox.Text.ToCharArray();
+            var result = "";
+            foreach (var letter in array)
+            {
+                switch (letter)
+                {
+                    case ',':
+                        continue;
+                    case ' ' when result.Last() != ' ':
+                        result += letter;
+                        break;
+                    default:
+                        result += letter;
+                        break;
+                }
+            }
+
+            StreetTextBox.Text = result;
+        }
     }
 }

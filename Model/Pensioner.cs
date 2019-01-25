@@ -67,6 +67,7 @@ namespace Model
         {
             if (requiredPayment != null)
             {
+                requiredPayment.Pensioner = this;
                 RequiredPayments.Add(requiredPayment);
             }
         }

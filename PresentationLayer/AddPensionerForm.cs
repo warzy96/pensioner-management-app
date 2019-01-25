@@ -48,7 +48,7 @@ namespace PresentationLayer
             }
             else if(LowRadioButton.Checked)
             {
-                requiredPayment = new PaymentType(PaymentType.TypeEnum.MutualAidHigh, Model.Properties.Settings.Default.MutualAidLowFee);
+                requiredPayment = new PaymentType(PaymentType.TypeEnum.MutualAidLow, Model.Properties.Settings.Default.MutualAidLowFee);
             }
 
             if (_controller.GetPensioner(id) != null)
@@ -139,15 +139,23 @@ namespace PresentationLayer
             errorProvider.SetError(StreetTextBox, null);
 
             var array = StreetTextBox.Text.ToCharArray();
+            var result = "";
+            foreach (var letter in array)
+            {
+                switch (letter)
+                {
+                    case ',':
+                        continue;
+                    case ' ' when result.Last() != ' ':
+                        result += letter;
+                        break;
+                    default:
+                        result += letter;
+                        break;
+                }
+            }
 
-            var numOfSpaces = array.Count(chr => chr == ' ');
-            if (numOfSpaces == 1) return;
-
-            var index = StreetTextBox.Text.IndexOf(' ');
-            if(index == -1) return;
-
-            StreetTextBox.Text = StreetTextBox.Text.Replace(" ", string.Empty);
-            StreetTextBox.Text = StreetTextBox.Text.Insert(index, " ");
+            StreetTextBox.Text = result;
         }
 
         private void OIBTextBox_KeyPress(object sender, KeyPressEventArgs e)

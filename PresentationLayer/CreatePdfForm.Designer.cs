@@ -200,7 +200,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.Button CancelButton;
+        private new System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.CheckBox OIBCheckBox;
         private System.Windows.Forms.CheckBox IdCheckBox;
         private System.Windows.Forms.CheckBox CityAndZipCodeCheckBox;

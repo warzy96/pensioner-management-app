@@ -17,5 +17,6 @@ namespace BaseLib
             PaymentType requiredPayment);
 
         void RemovePensioner(string oib);
+        void UpdatePensioner(Pensioner pensioner);
     }
 }

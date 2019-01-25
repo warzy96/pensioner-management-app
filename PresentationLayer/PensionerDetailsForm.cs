@@ -48,12 +48,13 @@ namespace PresentationLayer
 
             foreach (var payment in _pensioner.Payments)
             {
-                var listViewItem = new ListViewItem(payment.Id.ToString());
                 PaymentType.TypeEnumNames.TryGetValue(payment.Type.Type, out var paymentName);
-                listViewItem.SubItems.Add(paymentName);
+
+                var listViewItem = new ListViewItem(paymentName);
                 listViewItem.SubItems.Add(payment.Type.Amount.ToString());
                 listViewItem.SubItems.Add(payment.ForYear.Year.ToString());
-
+                listViewItem.SubItems.Add(payment.IsPayed ? "Da" : "Ne");
+                listViewItem.Selected = payment.IsPayed;
                 TransactionsListView.Items.Add(listViewItem);
             }
         }

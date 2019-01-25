@@ -57,15 +57,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.TransactionsListView = new System.Windows.Forms.ListView();
             this.TypeTransactionHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AmountColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ForYearColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IsPayedColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.DeleteButton = new System.Windows.Forms.Button();
-            this.IsPayedColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -74,6 +74,7 @@
             // 
             // NegativeButton
             // 
+            this.NegativeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.NegativeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NegativeButton.Location = new System.Drawing.Point(606, 681);
             this.NegativeButton.Name = "NegativeButton";
@@ -353,6 +354,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osobni podaci";
             // 
+            // DeleteButton
+            // 
+            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteButton.Location = new System.Drawing.Point(1074, 681);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(150, 60);
+            this.DeleteButton.TabIndex = 4;
+            this.DeleteButton.Text = "Obriši";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.TransactionsListView);
@@ -365,11 +377,13 @@
             // 
             // TransactionsListView
             // 
+            this.TransactionsListView.CheckBoxes = true;
             this.TransactionsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.TypeTransactionHeader,
             this.AmountColumnHeader,
             this.ForYearColumnHeader,
             this.IsPayedColumn});
+            this.TransactionsListView.FullRowSelect = true;
             this.TransactionsListView.Location = new System.Drawing.Point(13, 30);
             this.TransactionsListView.Name = "TransactionsListView";
             this.TransactionsListView.Size = new System.Drawing.Size(1301, 241);
@@ -391,6 +405,11 @@
             // 
             this.ForYearColumnHeader.Text = "Za godinu";
             this.ForYearColumnHeader.Width = 150;
+            // 
+            // IsPayedColumn
+            // 
+            this.IsPayedColumn.Text = "Plaćeno";
+            this.IsPayedColumn.Width = 150;
             // 
             // IdTextBox
             // 
@@ -439,27 +458,12 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1324, 222);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
-            // DeleteButton
-            // 
-            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteButton.Location = new System.Drawing.Point(1074, 681);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(150, 60);
-            this.DeleteButton.TabIndex = 4;
-            this.DeleteButton.Text = "Obriši";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
-            // 
-            // IsPayedColumn
-            // 
-            this.IsPayedColumn.Text = "Plaćeno";
-            this.IsPayedColumn.Width = 150;
-            // 
             // PensionerDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.CancelButton = this.NegativeButton;
             this.ClientSize = new System.Drawing.Size(1369, 759);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;

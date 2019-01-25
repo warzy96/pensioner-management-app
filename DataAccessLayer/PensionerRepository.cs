@@ -6,6 +6,7 @@ using BaseLib;
 using Model;
 using Model.Repositories;
 using NHibernate;
+using NHibernate.Cfg;
 using NHibernate.Linq;
 
 namespace DataAccessLayer
@@ -136,10 +137,14 @@ namespace DataAccessLayer
         {
             using (var session = Session)
             {
-                return session.Query<Pensioner>()
-                    .FetchMany(t => t.Payments)
-                    .FetchMany(t => t.RequiredPayments)
-                    .ToList();
+                var pensioners = GetAllWithPayments().ToList();
+                foreach (var pensioner in pensioners)
+                {
+                    pensioner.RequiredPayments = session.Query<PaymentType>()
+                        .Where(t => t.Pensioner.Oib.Equals(pensioner.Oib)).ToList();
+                }
+
+                return pensioners;
             }
         }
 
@@ -155,6 +160,57 @@ namespace DataAccessLayer
                     session.Query<Payment>().Where(t => t.Pensioner.Oib.Equals(pensioner.Oib)).ToList();
 
                 return pensioner;
+            }
+        }
+
+        public void GenerateMutualAidTransactions(DateTime forYear)
+        {
+            using (var session = Session)
+            {
+                var transaction = session.BeginTransaction();
+                var pensionerList = GetAllWithAllAttributes();
+
+                foreach (var pensioner in pensionerList)
+                {
+                    Payment payment = null;
+                    if (pensioner.RequiredPayments.Any(t => t.Type == PaymentType.TypeEnum.MutualAidLow))
+                    {
+                        payment = new Payment(pensioner,
+                            new PaymentType(PaymentType.TypeEnum.MutualAidLow,
+                                Model.Properties.Settings.Default.MutualAidLowFee), forYear);
+                    }
+                    else if(pensioner.RequiredPayments.Any(t => t.Type == PaymentType.TypeEnum.MutualAidHigh))
+                    {
+                        payment = new Payment(pensioner,
+                            new PaymentType(PaymentType.TypeEnum.MutualAidHigh,
+                                Model.Properties.Settings.Default.MutualAidHighFee), forYear);
+                    }
+                    if(payment != null) pensioner.Payments.Add(payment);
+                    session.Update(pensioner); 
+                }
+
+                transaction.Commit();
+            }
+        }
+
+        public void GenerateMembershipTransactions(DateTime forYear)
+        {
+            using (var session = Session)
+            {
+                var transaction = session.BeginTransaction();
+                var pensionerList = GetAllWithPayments();
+
+                foreach (var pensioner in pensionerList)
+                {
+                    var payment = new Payment(pensioner,
+                        new PaymentType(PaymentType.TypeEnum.Membership,
+                            Model.Properties.Settings.Default.MembershipFee), forYear);
+                    
+                    pensioner.Payments.Add(payment);
+                    session.Update(pensioner); 
+                }
+
+                transaction.Commit();
             }
         }
     }

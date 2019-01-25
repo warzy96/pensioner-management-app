@@ -8,6 +8,6 @@ namespace BaseLib
 {
     public interface IGenerateTransactionForm
     {
-        bool ShowGenerateTransactionForm();
+        bool ShowGenerateTransactionForm(string formTitle);
     }
 }

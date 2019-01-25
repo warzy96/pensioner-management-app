@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -15,15 +16,13 @@ namespace PresentationLayer
             _controller = mainController;
 
             InitializeComponent();
-            mainController.UpdatePensionerList(this);
-        }
-
-        private void AddPensionerButton_Click(object sender, EventArgs e)
-        {
+            _controller.UpdatePensionerList(this);
         }
 
         public void UpdatePensionerListView(IEnumerable<Pensioner> pensioners)
         {
+            pensionerList.Items.Clear();
+
             foreach (var pensioner in pensioners)
             {
                 var listViewItem = new ListViewItem(pensioner.Id.ToString());
@@ -41,15 +40,6 @@ namespace PresentationLayer
             _controller.ShowCreatePdfForm();
         }
 
-        private void pensionerList_MouseClick(object sender, MouseEventArgs e)
-        {
-            var selectedItem = pensionerList.SelectedItems[0];
-
-            var oibItemText = selectedItem.SubItems[4].Text;
-
-            _controller.ShowPensionerDetailsForm(oibItemText);
-        }
-
         private void AddNewPensionerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _controller.AddPensioner();
@@ -63,6 +53,25 @@ namespace PresentationLayer
         private void GenerateMutualAidToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _controller.ShowGenerateMutualAidForm();
+        }
+
+        private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            _controller.GetSearchResults(SearchTextBox.Text.Trim(), this);
+        }
+
+        private void PensionerList_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var selectedItem = pensionerList.SelectedItems[0];
+
+            var oibItemText = selectedItem.SubItems[4].Text;
+
+            _controller.ShowPensionerDetailsForm(oibItemText);
         }
     }
 }

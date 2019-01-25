@@ -30,5 +30,7 @@ namespace Model.Repositories
 
         IEnumerable<Pensioner> GetAllWithAllAttributes();
         Pensioner GetPensionerWithAllAttributes(string oib);
+        void GenerateMutualAidTransactions(DateTime forYear);
+        void GenerateMembershipTransactions(DateTime forYear);
     }
 }

@@ -37,17 +37,18 @@ namespace PresentationLayer
             this.PdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GenerateMembershipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.GenerateMutualAidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.članoviToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewPensionerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.pensionerList = new System.Windows.Forms.ListView();
             this.IdColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SurnameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AddressColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.OibColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.članoviToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddNewPensionerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchButton = new System.Windows.Forms.Button();
-            this.GenerateMutualAidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,10 +58,11 @@ namespace PresentationLayer
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.testToolStripMenuItem,
             this.test2ToolStripMenuItem,
-            this.članoviToolStripMenuItem});
+            this.članoviToolStripMenuItem,
+            this.SettingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1365, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(1365, 40);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,13 +72,13 @@ namespace PresentationLayer
             this.ImportToolStripMenuItem,
             this.ExportToolStripMenuItem});
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(123, 38);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(123, 36);
             this.testToolStripMenuItem.Text = "Datoteka";
             // 
             // ImportToolStripMenuItem
             // 
             this.ImportToolStripMenuItem.Name = "ImportToolStripMenuItem";
-            this.ImportToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.ImportToolStripMenuItem.Size = new System.Drawing.Size(168, 38);
             this.ImportToolStripMenuItem.Text = "Uvoz";
             // 
             // ExportToolStripMenuItem
@@ -84,13 +86,13 @@ namespace PresentationLayer
             this.ExportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.PdfToolStripMenuItem});
             this.ExportToolStripMenuItem.Name = "ExportToolStripMenuItem";
-            this.ExportToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.ExportToolStripMenuItem.Size = new System.Drawing.Size(168, 38);
             this.ExportToolStripMenuItem.Text = "Izvoz";
             // 
             // PdfToolStripMenuItem
             // 
             this.PdfToolStripMenuItem.Name = "PdfToolStripMenuItem";
-            this.PdfToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.PdfToolStripMenuItem.Size = new System.Drawing.Size(148, 38);
             this.PdfToolStripMenuItem.Text = "Pdf";
             this.PdfToolStripMenuItem.Click += new System.EventHandler(this.pdfToolStripMenuItem_Click);
             // 
@@ -100,7 +102,7 @@ namespace PresentationLayer
             this.GenerateMembershipToolStripMenuItem,
             this.GenerateMutualAidToolStripMenuItem});
             this.test2ToolStripMenuItem.Name = "test2ToolStripMenuItem";
-            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(142, 38);
+            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(142, 36);
             this.test2ToolStripMenuItem.Text = "Transakcije";
             // 
             // GenerateMembershipToolStripMenuItem
@@ -110,12 +112,41 @@ namespace PresentationLayer
             this.GenerateMembershipToolStripMenuItem.Text = "Generiraj članarinu";
             this.GenerateMembershipToolStripMenuItem.Click += new System.EventHandler(this.GenerateMembershipToolStripMenuItem_Click);
             // 
-            // textBox1
+            // GenerateMutualAidToolStripMenuItem
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 55);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1035, 31);
-            this.textBox1.TabIndex = 2;
+            this.GenerateMutualAidToolStripMenuItem.Name = "GenerateMutualAidToolStripMenuItem";
+            this.GenerateMutualAidToolStripMenuItem.Size = new System.Drawing.Size(402, 38);
+            this.GenerateMutualAidToolStripMenuItem.Text = "Generiraj uzajamnu pomoć";
+            this.GenerateMutualAidToolStripMenuItem.Click += new System.EventHandler(this.GenerateMutualAidToolStripMenuItem_Click);
+            // 
+            // članoviToolStripMenuItem
+            // 
+            this.članoviToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddNewPensionerToolStripMenuItem});
+            this.članoviToolStripMenuItem.Name = "članoviToolStripMenuItem";
+            this.članoviToolStripMenuItem.Size = new System.Drawing.Size(106, 36);
+            this.članoviToolStripMenuItem.Text = "Članovi";
+            // 
+            // AddNewPensionerToolStripMenuItem
+            // 
+            this.AddNewPensionerToolStripMenuItem.Name = "AddNewPensionerToolStripMenuItem";
+            this.AddNewPensionerToolStripMenuItem.Size = new System.Drawing.Size(314, 38);
+            this.AddNewPensionerToolStripMenuItem.Text = "Dodaj novog člana";
+            this.AddNewPensionerToolStripMenuItem.Click += new System.EventHandler(this.AddNewPensionerToolStripMenuItem_Click);
+            // 
+            // SettingsToolStripMenuItem
+            // 
+            this.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem";
+            this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(120, 36);
+            this.SettingsToolStripMenuItem.Text = "Postavke";
+            this.SettingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
+            // 
+            // SearchTextBox
+            // 
+            this.SearchTextBox.Location = new System.Drawing.Point(12, 55);
+            this.SearchTextBox.Name = "SearchTextBox";
+            this.SearchTextBox.Size = new System.Drawing.Size(1035, 31);
+            this.SearchTextBox.TabIndex = 2;
             // 
             // pensionerList
             // 
@@ -125,6 +156,7 @@ namespace PresentationLayer
             this.SurnameColumn,
             this.AddressColumn,
             this.OibColumn});
+            this.pensionerList.FullRowSelect = true;
             this.pensionerList.Location = new System.Drawing.Point(12, 137);
             this.pensionerList.MultiSelect = false;
             this.pensionerList.Name = "pensionerList";
@@ -132,7 +164,7 @@ namespace PresentationLayer
             this.pensionerList.TabIndex = 4;
             this.pensionerList.UseCompatibleStateImageBehavior = false;
             this.pensionerList.View = System.Windows.Forms.View.Details;
-            this.pensionerList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pensionerList_MouseClick);
+            this.pensionerList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.PensionerList_MouseDoubleClick);
             // 
             // IdColumn
             // 
@@ -159,36 +191,15 @@ namespace PresentationLayer
             this.OibColumn.Text = "OIB";
             this.OibColumn.Width = 110;
             // 
-            // članoviToolStripMenuItem
-            // 
-            this.članoviToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddNewPensionerToolStripMenuItem});
-            this.članoviToolStripMenuItem.Name = "članoviToolStripMenuItem";
-            this.članoviToolStripMenuItem.Size = new System.Drawing.Size(106, 38);
-            this.članoviToolStripMenuItem.Text = "Članovi";
-            // 
-            // AddNewPensionerToolStripMenuItem
-            // 
-            this.AddNewPensionerToolStripMenuItem.Name = "AddNewPensionerToolStripMenuItem";
-            this.AddNewPensionerToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
-            this.AddNewPensionerToolStripMenuItem.Text = "Dodaj novog člana";
-            this.AddNewPensionerToolStripMenuItem.Click += new System.EventHandler(this.AddNewPensionerToolStripMenuItem_Click);
-            // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(1070, 48);
+            this.SearchButton.Location = new System.Drawing.Point(1053, 48);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(283, 44);
             this.SearchButton.TabIndex = 5;
             this.SearchButton.Text = "Pretraži";
             this.SearchButton.UseVisualStyleBackColor = true;
-            // 
-            // GenerateMutualAidToolStripMenuItem
-            // 
-            this.GenerateMutualAidToolStripMenuItem.Name = "GenerateMutualAidToolStripMenuItem";
-            this.GenerateMutualAidToolStripMenuItem.Size = new System.Drawing.Size(402, 38);
-            this.GenerateMutualAidToolStripMenuItem.Text = "Generiraj uzajamnu pomoć";
-            this.GenerateMutualAidToolStripMenuItem.Click += new System.EventHandler(this.GenerateMutualAidToolStripMenuItem_Click);
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // MainForm
             // 
@@ -197,7 +208,7 @@ namespace PresentationLayer
             this.ClientSize = new System.Drawing.Size(1365, 664);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.pensionerList);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.SearchTextBox);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
@@ -206,6 +217,7 @@ namespace PresentationLayer
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1395, 739);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Udruga umirovljenika";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -220,7 +232,7 @@ namespace PresentationLayer
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem test2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem GenerateMembershipToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox SearchTextBox;
         private System.Windows.Forms.ListView pensionerList;
         private System.Windows.Forms.ColumnHeader NameColumn;
         private System.Windows.Forms.ColumnHeader SurnameColumn;
@@ -234,6 +246,7 @@ namespace PresentationLayer
         private ToolStripMenuItem AddNewPensionerToolStripMenuItem;
         private Button SearchButton;
         private ToolStripMenuItem GenerateMutualAidToolStripMenuItem;
+        private ToolStripMenuItem SettingsToolStripMenuItem;
     }
 }
 

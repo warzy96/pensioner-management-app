@@ -14,5 +14,6 @@ namespace BaseLib
         void ShowPensionerDetailsForm(string oib);
         void ShowGenerateMutualAidForm();
         void ShowGenerateMembershipForm();
+        void GetSearchResults(string filter, IMainForm mainForm);
     }
 }

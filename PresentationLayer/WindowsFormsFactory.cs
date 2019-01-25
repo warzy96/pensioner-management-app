@@ -27,6 +27,10 @@ namespace PresentationLayer
         {
             return new PensionerDetailsForm(controller, oib);
         }
-        
+
+        public IGenerateTransactionForm CreateGenerateTransactionsForm(ITransactionController transactionController)
+        {
+            return new GenerateTransactionForm(transactionController);
+        }
     }
 }

@@ -13,14 +13,16 @@ namespace Model
         {
             Membership = 1, 
             MutualAidLow,
-            MutualAidHigh
+            MutualAidHigh,
+            MutualAid
         }
 
         public static readonly Dictionary<TypeEnum, string> TypeEnumNames = new Dictionary<TypeEnum,string>()
         {
             {TypeEnum.Membership, "Članarina"},
             {TypeEnum.MutualAidLow, "Niža uzajamna pomoć"},
-            {TypeEnum.MutualAidHigh, "Viša uzajamna pomoć"}
+            {TypeEnum.MutualAidHigh, "Viša uzajamna pomoć"},
+            {TypeEnum.MutualAid, "Uzajamna pomoć" }
         };
 
         public virtual Pensioner Pensioner { get; set; }

@@ -14,5 +14,6 @@ namespace BaseLib
         IAddPensionerForm CreateAddPensionerForm(IPensionerController controller);
 
         IPensionerDetailsForm CreatePensionerDetailsForm(IPensionerController controller, string oib);
+        IGenerateTransactionForm CreateGenerateTransactionsForm(ITransactionController transactionController);
     }
 }

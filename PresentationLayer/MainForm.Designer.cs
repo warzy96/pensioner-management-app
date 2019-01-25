@@ -32,20 +32,22 @@ namespace PresentationLayer
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.daToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.izvozToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
+            this.GenerateMembershipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.AddPensionerButton = new System.Windows.Forms.Button();
             this.pensionerList = new System.Windows.Forms.ListView();
             this.IdColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SurnameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AddressColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.OibColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.članoviToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewPensionerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SearchButton = new System.Windows.Forms.Button();
+            this.GenerateMutualAidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,82 +56,66 @@ namespace PresentationLayer
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.testToolStripMenuItem,
-            this.test2ToolStripMenuItem});
+            this.test2ToolStripMenuItem,
+            this.članoviToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1365, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(1365, 42);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.daToolStripMenuItem,
-            this.izvozToolStripMenuItem});
+            this.ImportToolStripMenuItem,
+            this.ExportToolStripMenuItem});
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(123, 36);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(123, 38);
             this.testToolStripMenuItem.Text = "Datoteka";
             // 
-            // daToolStripMenuItem
+            // ImportToolStripMenuItem
             // 
-            this.daToolStripMenuItem.Name = "daToolStripMenuItem";
-            this.daToolStripMenuItem.Size = new System.Drawing.Size(168, 38);
-            this.daToolStripMenuItem.Text = "Uvoz";
+            this.ImportToolStripMenuItem.Name = "ImportToolStripMenuItem";
+            this.ImportToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.ImportToolStripMenuItem.Text = "Uvoz";
             // 
-            // izvozToolStripMenuItem
+            // ExportToolStripMenuItem
             // 
-            this.izvozToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pdfToolStripMenuItem});
-            this.izvozToolStripMenuItem.Name = "izvozToolStripMenuItem";
-            this.izvozToolStripMenuItem.Size = new System.Drawing.Size(168, 38);
-            this.izvozToolStripMenuItem.Text = "Izvoz";
+            this.ExportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PdfToolStripMenuItem});
+            this.ExportToolStripMenuItem.Name = "ExportToolStripMenuItem";
+            this.ExportToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.ExportToolStripMenuItem.Text = "Izvoz";
             // 
-            // pdfToolStripMenuItem
+            // PdfToolStripMenuItem
             // 
-            this.pdfToolStripMenuItem.Name = "pdfToolStripMenuItem";
-            this.pdfToolStripMenuItem.Size = new System.Drawing.Size(148, 38);
-            this.pdfToolStripMenuItem.Text = "Pdf";
-            this.pdfToolStripMenuItem.Click += new System.EventHandler(this.pdfToolStripMenuItem_Click);
+            this.PdfToolStripMenuItem.Name = "PdfToolStripMenuItem";
+            this.PdfToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.PdfToolStripMenuItem.Text = "Pdf";
+            this.PdfToolStripMenuItem.Click += new System.EventHandler(this.pdfToolStripMenuItem_Click);
             // 
             // test2ToolStripMenuItem
             // 
             this.test2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.testicToolStripMenuItem});
+            this.GenerateMembershipToolStripMenuItem,
+            this.GenerateMutualAidToolStripMenuItem});
             this.test2ToolStripMenuItem.Name = "test2ToolStripMenuItem";
-            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(142, 36);
+            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(142, 38);
             this.test2ToolStripMenuItem.Text = "Transakcije";
             // 
-            // testicToolStripMenuItem
+            // GenerateMembershipToolStripMenuItem
             // 
-            this.testicToolStripMenuItem.Name = "testicToolStripMenuItem";
-            this.testicToolStripMenuItem.Size = new System.Drawing.Size(170, 38);
-            this.testicToolStripMenuItem.Text = "testic";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Pretraži";
+            this.GenerateMembershipToolStripMenuItem.Name = "GenerateMembershipToolStripMenuItem";
+            this.GenerateMembershipToolStripMenuItem.Size = new System.Drawing.Size(402, 38);
+            this.GenerateMembershipToolStripMenuItem.Text = "Generiraj članarinu";
+            this.GenerateMembershipToolStripMenuItem.Click += new System.EventHandler(this.GenerateMembershipToolStripMenuItem_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(104, 43);
+            this.textBox1.Location = new System.Drawing.Point(12, 55);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(943, 31);
+            this.textBox1.Size = new System.Drawing.Size(1035, 31);
             this.textBox1.TabIndex = 2;
-            // 
-            // AddPensionerButton
-            // 
-            this.AddPensionerButton.Location = new System.Drawing.Point(17, 80);
-            this.AddPensionerButton.Name = "AddPensionerButton";
-            this.AddPensionerButton.Size = new System.Drawing.Size(200, 51);
-            this.AddPensionerButton.TabIndex = 3;
-            this.AddPensionerButton.Text = "Add Pensioner";
-            this.AddPensionerButton.UseVisualStyleBackColor = true;
-            this.AddPensionerButton.Click += new System.EventHandler(this.AddPensionerButton_Click);
             // 
             // pensionerList
             // 
@@ -173,15 +159,45 @@ namespace PresentationLayer
             this.OibColumn.Text = "OIB";
             this.OibColumn.Width = 110;
             // 
+            // članoviToolStripMenuItem
+            // 
+            this.članoviToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddNewPensionerToolStripMenuItem});
+            this.članoviToolStripMenuItem.Name = "članoviToolStripMenuItem";
+            this.članoviToolStripMenuItem.Size = new System.Drawing.Size(106, 38);
+            this.članoviToolStripMenuItem.Text = "Članovi";
+            // 
+            // AddNewPensionerToolStripMenuItem
+            // 
+            this.AddNewPensionerToolStripMenuItem.Name = "AddNewPensionerToolStripMenuItem";
+            this.AddNewPensionerToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.AddNewPensionerToolStripMenuItem.Text = "Dodaj novog člana";
+            this.AddNewPensionerToolStripMenuItem.Click += new System.EventHandler(this.AddNewPensionerToolStripMenuItem_Click);
+            // 
+            // SearchButton
+            // 
+            this.SearchButton.Location = new System.Drawing.Point(1070, 48);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(283, 44);
+            this.SearchButton.TabIndex = 5;
+            this.SearchButton.Text = "Pretraži";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            // 
+            // GenerateMutualAidToolStripMenuItem
+            // 
+            this.GenerateMutualAidToolStripMenuItem.Name = "GenerateMutualAidToolStripMenuItem";
+            this.GenerateMutualAidToolStripMenuItem.Size = new System.Drawing.Size(402, 38);
+            this.GenerateMutualAidToolStripMenuItem.Text = "Generiraj uzajamnu pomoć";
+            this.GenerateMutualAidToolStripMenuItem.Click += new System.EventHandler(this.GenerateMutualAidToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1365, 664);
+            this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.pensionerList);
-            this.Controls.Add(this.AddPensionerButton);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
@@ -203,19 +219,21 @@ namespace PresentationLayer
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem test2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem testicToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem GenerateMembershipToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button AddPensionerButton;
         private System.Windows.Forms.ListView pensionerList;
         private System.Windows.Forms.ColumnHeader NameColumn;
         private System.Windows.Forms.ColumnHeader SurnameColumn;
         private System.Windows.Forms.ColumnHeader AddressColumn;
         private System.Windows.Forms.ColumnHeader OibColumn;
         private System.Windows.Forms.ColumnHeader IdColumn;
-        private ToolStripMenuItem daToolStripMenuItem;
-        private ToolStripMenuItem izvozToolStripMenuItem;
-        private ToolStripMenuItem pdfToolStripMenuItem;
+        private ToolStripMenuItem ImportToolStripMenuItem;
+        private ToolStripMenuItem ExportToolStripMenuItem;
+        private ToolStripMenuItem PdfToolStripMenuItem;
+        private ToolStripMenuItem članoviToolStripMenuItem;
+        private ToolStripMenuItem AddNewPensionerToolStripMenuItem;
+        private Button SearchButton;
+        private ToolStripMenuItem GenerateMutualAidToolStripMenuItem;
     }
 }
 

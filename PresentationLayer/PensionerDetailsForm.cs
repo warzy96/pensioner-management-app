@@ -61,6 +61,7 @@ namespace PresentationLayer
         public bool ShowPensionerDetailsForm()
         {
             if (_pensioner != null) return ShowDialog() == DialogResult.OK;
+            Close();
             MessageBox.Show("Umirovljenik ne postoji!");
             return false;
         }
@@ -70,7 +71,7 @@ namespace PresentationLayer
             var confirmMessageBox = MessageBox.Show("Jeste li sigurni da želite obrisati člana?", "Potvrda brisanja",
                 MessageBoxButtons.YesNo);
 
-            if (confirmMessageBox == DialogResult.OK)
+            if (confirmMessageBox == DialogResult.Yes)
             {
                 _controller.RemovePensioner(OIBTextBox.Text);
                 Close();

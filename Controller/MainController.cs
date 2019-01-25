@@ -47,5 +47,15 @@ namespace Controller
 
             pensionerController.ShowPensionerDetailsForm(form);
         }
+
+        public void ShowGenerateMutualAidForm()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowGenerateMembershipForm()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

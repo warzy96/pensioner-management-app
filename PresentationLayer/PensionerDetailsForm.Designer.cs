@@ -65,6 +65,7 @@
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.DeleteButton = new System.Windows.Forms.Button();
+            this.IsPayedColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -367,7 +368,8 @@
             this.TransactionsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.TypeTransactionHeader,
             this.AmountColumnHeader,
-            this.ForYearColumnHeader});
+            this.ForYearColumnHeader,
+            this.IsPayedColumn});
             this.TransactionsListView.Location = new System.Drawing.Point(13, 30);
             this.TransactionsListView.Name = "TransactionsListView";
             this.TransactionsListView.Size = new System.Drawing.Size(1301, 241);
@@ -448,6 +450,11 @@
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
+            // IsPayedColumn
+            // 
+            this.IsPayedColumn.Text = "Plaćeno";
+            this.IsPayedColumn.Width = 150;
+            // 
             // PensionerDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -511,5 +518,6 @@
         private System.Windows.Forms.ColumnHeader AmountColumnHeader;
         private System.Windows.Forms.ColumnHeader ForYearColumnHeader;
         private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.ColumnHeader IsPayedColumn;
     }
 }

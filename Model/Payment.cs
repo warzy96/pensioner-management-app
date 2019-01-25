@@ -12,6 +12,7 @@ namespace Model
         public virtual Pensioner Pensioner { get; set; }
         public virtual PaymentType Type { get; set; }
         public virtual DateTime ForYear { get; set; }
+        public virtual bool IsPayed { get; set; }
 
         public Payment()
         {
@@ -21,6 +22,15 @@ namespace Model
             Pensioner = pensioner;
             Type = type;
             ForYear = forYear;
+            IsPayed = false;
+        }
+
+        public Payment(Pensioner pensioner, PaymentType type, DateTime forYear, bool isPayed)
+        {
+            Pensioner = pensioner;
+            Type = type;
+            ForYear = forYear;
+            IsPayed = isPayed;
         }
     }
 }

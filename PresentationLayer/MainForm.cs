@@ -20,7 +20,6 @@ namespace PresentationLayer
 
         private void AddPensionerButton_Click(object sender, EventArgs e)
         {
-            _controller.AddPensioner();
         }
 
         public void UpdatePensionerListView(IEnumerable<Pensioner> pensioners)
@@ -42,11 +41,6 @@ namespace PresentationLayer
             _controller.ShowCreatePdfForm();
         }
 
-        private void pensionerList_ItemActivate(object sender, EventArgs e)
-        {
-            
-        }
-
         private void pensionerList_MouseClick(object sender, MouseEventArgs e)
         {
             var selectedItem = pensionerList.SelectedItems[0];
@@ -54,6 +48,21 @@ namespace PresentationLayer
             var oibItemText = selectedItem.SubItems[4].Text;
 
             _controller.ShowPensionerDetailsForm(oibItemText);
+        }
+
+        private void AddNewPensionerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _controller.AddPensioner();
+        }
+
+        private void GenerateMembershipToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _controller.ShowGenerateMembershipForm();
+        }
+
+        private void GenerateMutualAidToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _controller.ShowGenerateMutualAidForm();
         }
     }
 }

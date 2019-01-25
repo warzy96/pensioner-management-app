@@ -73,6 +73,12 @@
     <Compile Include="CreatePdfForm.Designer.cs">
       <DependentUpon>CreatePdfForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerateTransactionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateTransactionForm.Designer.cs">
+      <DependentUpon>GenerateTransactionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreatePdfForm.resx">
       <DependentUpon>CreatePdfForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateTransactionForm.resx">
+      <DependentUpon>GenerateTransactionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

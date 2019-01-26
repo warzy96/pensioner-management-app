@@ -9,13 +9,14 @@ using BaseLib;
 using DataAccessLayer;
 using Model;
 using Model.Repositories;
+using PresentationLayer;
 
 namespace Controller
 {
     public class PensionerController: IPensionerController
     {
         private readonly IPensionerRepository _pensionerRepository = PensionerRepository.GetInstance();
-
+        private IPensionerDetailsForm _form;
         public Pensioner GetPensioner(int id)
         {
             return _pensionerRepository.GetPensioner(id);
@@ -56,9 +57,18 @@ namespace Controller
             _pensionerRepository.RemovePayment(payment);
         }
 
+        public IList<Payment> GetPayments(string pensionerOib)
+        {
+            return _pensionerRepository.GetPayments(pensionerOib);
+        }
+
         public void ShowPensionerDetailsForm(IPensionerDetailsForm form)
         {
+            ((PensionerRepository) _pensionerRepository).Attach((PensionerDetailsForm) form);
+
             form.ShowPensionerDetailsForm();
+
+            ((PensionerRepository)_pensionerRepository).Delete((PensionerDetailsForm)_form);
         }
     }
 }

@@ -8,7 +8,7 @@ using Model;
 
 namespace PresentationLayer
 {
-    public partial class MainForm : Form, IMainForm
+    public partial class MainForm : Form, IMainForm, IObserver
     {
         private readonly IMainController _controller;
         public MainForm(IMainController mainController)
@@ -16,7 +16,8 @@ namespace PresentationLayer
             _controller = mainController;
 
             InitializeComponent();
-            _controller.UpdatePensionerList(this);
+
+            UpdateView();
         }
 
         public void UpdatePensionerListView(IEnumerable<Pensioner> pensioners)
@@ -72,6 +73,11 @@ namespace PresentationLayer
             var oibItemText = selectedItem.SubItems[4].Text;
 
             _controller.ShowPensionerDetailsForm(oibItemText);
+        }
+
+        public void UpdateView()
+        {
+            _controller.UpdatePensionerList(this);
         }
     }
 }

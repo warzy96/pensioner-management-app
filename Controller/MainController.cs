@@ -14,8 +14,9 @@ namespace Controller
 {
     public class MainController : IMainController
     {
-        private readonly IPensionerRepository _pensionerRepository = PensionerRepository.GetInstance();
+        private readonly PensionerRepository _pensionerRepository = PensionerRepository.GetInstance();
         private readonly IWindowFormsFactory _formsFactory;
+        private MainForm _mainForm;
 
         public MainController(IWindowFormsFactory factory)
         {
@@ -25,13 +26,20 @@ namespace Controller
         public void AddPensioner()
         {
             var pensionerController = new PensionerController();
+
             var addPensionerForm = _formsFactory.CreateAddPensionerForm(pensionerController);
 
+            _pensionerRepository.Attach(_mainForm);
+
             pensionerController.ShowAddPensionerForm(addPensionerForm);
+
+            _pensionerRepository.Delete(_mainForm);
         }
 
         public void UpdatePensionerList(IMainForm mainForm)
         {
+            _mainForm = (MainForm)mainForm;
+
             mainForm.UpdatePensionerListView(_pensionerRepository.GetAll());
         }
 
@@ -46,7 +54,11 @@ namespace Controller
             var pensionerController = new PensionerController();
             var form = _formsFactory.CreatePensionerDetailsForm(pensionerController, oib);
 
+            _pensionerRepository.Attach(_mainForm);
+
             pensionerController.ShowPensionerDetailsForm(form);
+
+            _pensionerRepository.Delete(_mainForm);
         }
 
         public void ShowGenerateMutualAidForm()

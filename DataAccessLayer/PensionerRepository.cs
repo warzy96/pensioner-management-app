@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using BaseLib;
+using FluentNHibernate.Conventions;
 using Model;
 using Model.Repositories;
 using NHibernate;
@@ -179,15 +180,23 @@ namespace DataAccessLayer
                     Payment payment = null;
                     if (pensioner.RequiredPayments.Any(t => t.Type == PaymentType.TypeEnum.MutualAidLow))
                     {
-                        payment = new Payment(pensioner,
-                            new PaymentType(PaymentType.TypeEnum.MutualAidLow,
-                                Model.Properties.Settings.Default.MutualAidLowFee), forYear);
+                        //don't generate if payment already exists for this year
+                        if (pensioner.Payments.Where(t => t.ForYear.Year.Equals(forYear.Year) && t.Type.Type == PaymentType.TypeEnum.MutualAidLow).IsEmpty())
+                        {
+                            payment = new Payment(pensioner,
+                                new PaymentType(PaymentType.TypeEnum.MutualAidLow,
+                                    Model.Properties.Settings.Default.MutualAidLowFee), forYear);
+                        }
                     }
                     else if(pensioner.RequiredPayments.Any(t => t.Type == PaymentType.TypeEnum.MutualAidHigh))
                     {
-                        payment = new Payment(pensioner,
-                            new PaymentType(PaymentType.TypeEnum.MutualAidHigh,
-                                Model.Properties.Settings.Default.MutualAidHighFee), forYear);
+                        //don't generate if payment already exists for this year
+                        if (pensioner.Payments.Where(t => t.ForYear.Year.Equals(forYear.Year) && t.Type.Type == PaymentType.TypeEnum.MutualAidHigh).IsEmpty())
+                        {
+                            payment = new Payment(pensioner,
+                                new PaymentType(PaymentType.TypeEnum.MutualAidHigh,
+                                    Model.Properties.Settings.Default.MutualAidHighFee), forYear);
+                        }
                     }
                     if(payment != null) pensioner.Payments.Add(payment);
                     session.Update(pensioner); 
@@ -206,11 +215,16 @@ namespace DataAccessLayer
 
                 foreach (var pensioner in pensionerList)
                 {
-                    var payment = new Payment(pensioner,
-                        new PaymentType(PaymentType.TypeEnum.Membership,
-                            Model.Properties.Settings.Default.MembershipFee), forYear);
-                    
-                    pensioner.Payments.Add(payment);
+                    if (pensioner.Payments.Where(t =>
+                            t.ForYear.Year.Equals(forYear.Year) && t.Type.Type == PaymentType.TypeEnum.Membership)
+                        .IsEmpty())
+                    {
+                        var payment = new Payment(pensioner,
+                            new PaymentType(PaymentType.TypeEnum.Membership,
+                                Model.Properties.Settings.Default.MembershipFee), forYear);
+                        pensioner.Payments.Add(payment);
+                    }
+
                     session.Update(pensioner); 
                 }
 
@@ -252,6 +266,14 @@ namespace DataAccessLayer
             }
 
             NotifyObservers();
+        }
+
+        public IList<Payment> GetPayments(string pensionerOib)
+        {
+            using (var session = Session)
+            {
+                return session.Query<Payment>().Where(p => p.Pensioner.Oib.Equals(pensionerOib)).ToList();
+            }
         }
     }
 }

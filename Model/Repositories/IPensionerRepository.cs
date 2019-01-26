@@ -34,5 +34,6 @@ namespace Model.Repositories
         void GenerateMembershipTransactions(DateTime forYear);
         void UpdatePensioner(Pensioner pensioner);
         void RemovePayment(Payment payment);
+        IList<Payment> GetPayments(string pensionerOib);
     }
 }

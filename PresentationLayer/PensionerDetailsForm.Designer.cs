@@ -58,6 +58,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DeleteTransactionButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.TransactionsListView = new System.Windows.Forms.ListView();
@@ -65,11 +66,10 @@
             this.AmountColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ForYearColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IsPayedColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.DeleteTransactionButton = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -155,7 +155,7 @@
             // 
             this.PostalCodeTextBox.Location = new System.Drawing.Point(828, 135);
             this.PostalCodeTextBox.Name = "PostalCodeTextBox";
-            this.PostalCodeTextBox.Size = new System.Drawing.Size(493, 31);
+            this.PostalCodeTextBox.Size = new System.Drawing.Size(442, 31);
             this.PostalCodeTextBox.TabIndex = 6;
             this.PostalCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PostalCodeTextBox_KeyPress);
             this.PostalCodeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.PostalCodeTextBox_Validating);
@@ -164,7 +164,7 @@
             // 
             this.CityTextBox.Location = new System.Drawing.Point(828, 91);
             this.CityTextBox.Name = "CityTextBox";
-            this.CityTextBox.Size = new System.Drawing.Size(493, 31);
+            this.CityTextBox.Size = new System.Drawing.Size(442, 31);
             this.CityTextBox.TabIndex = 7;
             this.CityTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.CityTextBox_Validating);
             // 
@@ -181,7 +181,7 @@
             // 
             this.StreetTextBox.Location = new System.Drawing.Point(828, 47);
             this.StreetTextBox.Name = "StreetTextBox";
-            this.StreetTextBox.Size = new System.Drawing.Size(493, 31);
+            this.StreetTextBox.Size = new System.Drawing.Size(442, 31);
             this.StreetTextBox.TabIndex = 5;
             this.StreetTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StreetTextBox_KeyPress);
             this.StreetTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.StreetTextBox_Validating);
@@ -219,7 +219,7 @@
             // 
             this.TownTextBox.Location = new System.Drawing.Point(828, 3);
             this.TownTextBox.Name = "TownTextBox";
-            this.TownTextBox.Size = new System.Drawing.Size(493, 31);
+            this.TownTextBox.Size = new System.Drawing.Size(442, 31);
             this.TownTextBox.TabIndex = 4;
             this.TownTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TownTextBox_Validating);
             // 
@@ -275,7 +275,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.NameTextBox.Location = new System.Drawing.Point(175, 3);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(493, 31);
+            this.NameTextBox.Size = new System.Drawing.Size(442, 31);
             this.NameTextBox.TabIndex = 0;
             this.NameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.NameTextBox_Validating);
             // 
@@ -295,7 +295,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.PlaceOfBirthTextBox.Location = new System.Drawing.Point(175, 135);
             this.PlaceOfBirthTextBox.Name = "PlaceOfBirthTextBox";
-            this.PlaceOfBirthTextBox.Size = new System.Drawing.Size(493, 31);
+            this.PlaceOfBirthTextBox.Size = new System.Drawing.Size(442, 31);
             this.PlaceOfBirthTextBox.TabIndex = 9;
             this.PlaceOfBirthTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.PlaceOfBirthTextBox_Validating);
             // 
@@ -305,7 +305,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.SurnameTextBox.Location = new System.Drawing.Point(175, 47);
             this.SurnameTextBox.Name = "SurnameTextBox";
-            this.SurnameTextBox.Size = new System.Drawing.Size(493, 31);
+            this.SurnameTextBox.Size = new System.Drawing.Size(442, 31);
             this.SurnameTextBox.TabIndex = 1;
             this.SurnameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.SurnameTextBox_Validating);
             // 
@@ -327,7 +327,7 @@
             this.OIBTextBox.Location = new System.Drawing.Point(175, 91);
             this.OIBTextBox.Name = "OIBTextBox";
             this.OIBTextBox.ReadOnly = true;
-            this.OIBTextBox.Size = new System.Drawing.Size(493, 31);
+            this.OIBTextBox.Size = new System.Drawing.Size(442, 31);
             this.OIBTextBox.TabIndex = 4;
             // 
             // label3
@@ -369,6 +369,18 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osobni podaci";
+            // 
+            // DeleteTransactionButton
+            // 
+            this.DeleteTransactionButton.Enabled = false;
+            this.DeleteTransactionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteTransactionButton.Location = new System.Drawing.Point(968, 347);
+            this.DeleteTransactionButton.Name = "DeleteTransactionButton";
+            this.DeleteTransactionButton.Size = new System.Drawing.Size(359, 54);
+            this.DeleteTransactionButton.TabIndex = 1;
+            this.DeleteTransactionButton.Text = "Obriši označene transakcije";
+            this.DeleteTransactionButton.UseVisualStyleBackColor = true;
+            this.DeleteTransactionButton.Click += new System.EventHandler(this.DeleteTransactionButton_Click);
             // 
             // DeleteButton
             // 
@@ -431,6 +443,11 @@
             this.IsPayedColumn.Text = "Plaćeno";
             this.IsPayedColumn.Width = 150;
             // 
+            // Id
+            // 
+            this.Id.Text = "Id";
+            this.Id.Width = 0;
+            // 
             // IdTextBox
             // 
             this.IdTextBox.Location = new System.Drawing.Point(187, 339);
@@ -483,23 +500,6 @@
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider.ContainerControl = this;
             // 
-            // Id
-            // 
-            this.Id.Text = "Id";
-            this.Id.Width = 0;
-            // 
-            // DeleteTransactionButton
-            // 
-            this.DeleteTransactionButton.Enabled = false;
-            this.DeleteTransactionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteTransactionButton.Location = new System.Drawing.Point(968, 347);
-            this.DeleteTransactionButton.Name = "DeleteTransactionButton";
-            this.DeleteTransactionButton.Size = new System.Drawing.Size(359, 54);
-            this.DeleteTransactionButton.TabIndex = 1;
-            this.DeleteTransactionButton.Text = "Obriši označene transakcije";
-            this.DeleteTransactionButton.UseVisualStyleBackColor = true;
-            this.DeleteTransactionButton.Click += new System.EventHandler(this.DeleteTransactionButton_Click);
-            // 
             // PensionerDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -508,11 +508,13 @@
             this.CancelButton = this.NegativeButton;
             this.ClientSize = new System.Drawing.Size(1369, 759);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1395, 830);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1395, 830);
             this.Name = "PensionerDetailsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detalji";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

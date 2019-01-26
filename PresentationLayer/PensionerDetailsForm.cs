@@ -14,7 +14,7 @@ using Remotion.Linq.Parsing.Structure.IntermediateModel;
 
 namespace PresentationLayer
 {
-    public partial class PensionerDetailsForm : Form, IPensionerDetailsForm
+    public partial class PensionerDetailsForm : Form, IPensionerDetailsForm, IObserver
     {
         private readonly IPensionerController _controller;
         private readonly Pensioner _pensioner;
@@ -46,6 +46,13 @@ namespace PresentationLayer
             PlaceOfBirthTextBox.Text = _pensioner.PlaceOfBirth;
             LowRadioButton.Checked = _pensioner.RequiredPayments.Any(t => t.Type == PaymentType.TypeEnum.MutualAidLow);
             HighRadioButton.Checked = _pensioner.RequiredPayments.Any(t => t.Type == PaymentType.TypeEnum.MutualAidHigh);
+
+            UpdatePayments();
+        }
+
+        private void UpdatePayments()
+        {
+            TransactionsListView.Items.Clear();
 
             foreach (var payment in _pensioner.Payments)
             {
@@ -221,16 +228,24 @@ namespace PresentationLayer
         private void DeleteTransactionButton_Click(object sender, EventArgs e)
         {
             DeleteTransactionButton.Enabled = false;
-            foreach (ListViewItem selectedItem in TransactionsListView.SelectedItems)
+
+            if (MessageBox.Show("Jeste li sigurni da želite obrisati transakciju?", "Brisanje transakcije",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                var payment = _pensioner.Payments.FirstOrDefault(t => t.Id == int.Parse(selectedItem.SubItems[4].Text));
-                if (payment != null)
+                foreach (ListViewItem selectedItem in TransactionsListView.SelectedItems)
                 {
-                    _pensioner.Payments.Remove(payment);
-                    _controller.RemovePayment(payment);
+                    var payment = _pensioner.Payments.FirstOrDefault(t => t.Id == int.Parse(selectedItem.SubItems[4].Text));
+                    if (payment != null)
+                    {
+                        _pensioner.Payments.Remove(payment);
+                        _controller.RemovePayment(payment);
+                    }
                 }
+
+                return;
             }
 
+            DeleteTransactionButton.Enabled = true;
         }
 
         private void TransactionsListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -239,6 +254,12 @@ namespace PresentationLayer
             {
                 DeleteTransactionButton.Enabled = true;
             }
+        }
+
+        public void UpdateView()
+        {
+            _pensioner.Payments = _controller.GetPayments(_pensioner.Oib);
+            UpdatePayments();
         }
     }
 }

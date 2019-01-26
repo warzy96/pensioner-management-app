@@ -109,6 +109,8 @@ namespace DataAccessLayer
                 session.Update(pensioner);
                 transaction.Commit();
             }
+
+            NotifyObservers();
         }
 
         public IEnumerable<Pensioner> GetAll()
@@ -234,6 +236,22 @@ namespace DataAccessLayer
 
                 transaction.Commit();
             }
+
+            NotifyObservers();
+        }
+
+        public void RemovePayment(Payment payment)
+        {
+            using(var session = Session)
+            {
+                var transaction = session.BeginTransaction();
+
+                session.Delete(payment);
+
+                transaction.Commit();
+            }
+
+            NotifyObservers();
         }
     }
 }

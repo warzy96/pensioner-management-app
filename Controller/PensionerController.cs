@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +49,11 @@ namespace Controller
         public void UpdatePensioner(Pensioner pensioner)
         {
             _pensionerRepository.UpdatePensioner(pensioner);
+        }
+
+        public void RemovePayment(Payment payment)
+        {
+            _pensionerRepository.RemovePayment(payment);
         }
 
         public void ShowPensionerDetailsForm(IPensionerDetailsForm form)

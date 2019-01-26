@@ -18,5 +18,6 @@ namespace BaseLib
 
         void RemovePensioner(string oib);
         void UpdatePensioner(Pensioner pensioner);
+        void RemovePayment(Payment payment);
     }
 }

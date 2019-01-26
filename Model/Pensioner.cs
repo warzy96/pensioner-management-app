@@ -72,17 +72,6 @@ namespace Model
             }
         }
 
-        public override bool Equals(object obj)
-        {
-            var pensioner = (Pensioner) obj;
-            return pensioner != null && pensioner.Id == Id && pensioner.Oib.Equals(Oib);
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
         public virtual string GetFullName()
         {
             return Name + " " + Surname;

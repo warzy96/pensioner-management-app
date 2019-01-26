@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BaseLib;
 using Model;
 using NHibernate.Util;
+using Remotion.Linq.Parsing.Structure.IntermediateModel;
 
 namespace PresentationLayer
 {
@@ -54,7 +55,8 @@ namespace PresentationLayer
                 listViewItem.SubItems.Add(payment.Type.Amount.ToString());
                 listViewItem.SubItems.Add(payment.ForYear.Year.ToString());
                 listViewItem.SubItems.Add(payment.IsPayed ? "Da" : "Ne");
-                listViewItem.Selected = payment.IsPayed;
+                listViewItem.SubItems.Add(payment.Id.ToString());
+                listViewItem.Checked = payment.IsPayed;
                 TransactionsListView.Items.Add(listViewItem);
             }
         }
@@ -107,6 +109,19 @@ namespace PresentationLayer
                 t.Type == PaymentType.TypeEnum.MutualAidHigh || t.Type == PaymentType.TypeEnum.MutualAidLow));
             _pensioner.RequiredPayments.Add(requiredPayment);
 
+            foreach (ListViewItem item in TransactionsListView.Items)
+            {
+                var transaction = _pensioner.Payments.FirstOrDefault(t => t.Id == int.Parse(item.SubItems[4].Text));
+
+                if (item.Checked)
+                {
+                    if (transaction != null) transaction.IsPayed = true;
+                }
+                else
+                {
+                    if (transaction != null) transaction.IsPayed = false;
+                }
+            }
             _controller.UpdatePensioner(_pensioner);
             Close();
         }
@@ -201,6 +216,29 @@ namespace PresentationLayer
             }
 
             StreetTextBox.Text = result;
+        }
+
+        private void DeleteTransactionButton_Click(object sender, EventArgs e)
+        {
+            DeleteTransactionButton.Enabled = false;
+            foreach (ListViewItem selectedItem in TransactionsListView.SelectedItems)
+            {
+                var payment = _pensioner.Payments.FirstOrDefault(t => t.Id == int.Parse(selectedItem.SubItems[4].Text));
+                if (payment != null)
+                {
+                    _pensioner.Payments.Remove(payment);
+                    _controller.RemovePayment(payment);
+                }
+            }
+
+        }
+
+        private void TransactionsListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (TransactionsListView.SelectedItems.Count > 0)
+            {
+                DeleteTransactionButton.Enabled = true;
+            }
         }
     }
 }

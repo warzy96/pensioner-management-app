@@ -33,5 +33,6 @@ namespace Model.Repositories
         void GenerateMutualAidTransactions(DateTime forYear);
         void GenerateMembershipTransactions(DateTime forYear);
         void UpdatePensioner(Pensioner pensioner);
+        void RemovePayment(Payment payment);
     }
 }

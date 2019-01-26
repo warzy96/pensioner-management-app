@@ -32,16 +32,5 @@ namespace Model
             ForYear = forYear;
             IsPayed = isPayed;
         }
-
-        public override bool Equals(object obj)
-        {
-            var payment = (Payment) obj;
-            return payment.Pensioner.Id == Id && payment.Id == Id;
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
     }
 }

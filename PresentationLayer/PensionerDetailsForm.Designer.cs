@@ -68,6 +68,8 @@
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DeleteTransactionButton = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -352,6 +354,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.DeleteTransactionButton);
             this.groupBox1.Controls.Add(this.DeleteButton);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.IdTextBox);
@@ -390,19 +393,23 @@
             // 
             // TransactionsListView
             // 
+            this.TransactionsListView.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.TransactionsListView.CheckBoxes = true;
             this.TransactionsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.TypeTransactionHeader,
             this.AmountColumnHeader,
             this.ForYearColumnHeader,
-            this.IsPayedColumn});
+            this.IsPayedColumn,
+            this.Id});
             this.TransactionsListView.FullRowSelect = true;
             this.TransactionsListView.Location = new System.Drawing.Point(13, 30);
+            this.TransactionsListView.MultiSelect = false;
             this.TransactionsListView.Name = "TransactionsListView";
             this.TransactionsListView.Size = new System.Drawing.Size(1301, 241);
             this.TransactionsListView.TabIndex = 0;
             this.TransactionsListView.UseCompatibleStateImageBehavior = false;
             this.TransactionsListView.View = System.Windows.Forms.View.Details;
+            this.TransactionsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.TransactionsListView_ItemSelectionChanged);
             // 
             // TypeTransactionHeader
             // 
@@ -476,6 +483,23 @@
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider.ContainerControl = this;
             // 
+            // Id
+            // 
+            this.Id.Text = "Id";
+            this.Id.Width = 0;
+            // 
+            // DeleteTransactionButton
+            // 
+            this.DeleteTransactionButton.Enabled = false;
+            this.DeleteTransactionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteTransactionButton.Location = new System.Drawing.Point(968, 347);
+            this.DeleteTransactionButton.Name = "DeleteTransactionButton";
+            this.DeleteTransactionButton.Size = new System.Drawing.Size(359, 54);
+            this.DeleteTransactionButton.TabIndex = 1;
+            this.DeleteTransactionButton.Text = "Obriši označene transakcije";
+            this.DeleteTransactionButton.UseVisualStyleBackColor = true;
+            this.DeleteTransactionButton.Click += new System.EventHandler(this.DeleteTransactionButton_Click);
+            // 
             // PensionerDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -542,5 +566,7 @@
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.ColumnHeader IsPayedColumn;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ColumnHeader Id;
+        private System.Windows.Forms.Button DeleteTransactionButton;
     }
 }

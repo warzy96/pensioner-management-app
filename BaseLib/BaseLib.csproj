@@ -78,6 +78,7 @@
     <Compile Include="Subject.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ObserverPattern.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -62,6 +62,7 @@
     <Compile Include="Enums.cs" />
     <Compile Include="IAddPensionerForm.cs" />
     <Compile Include="ICreatePdfForm.cs" />
+    <Compile Include="IEditSettingsForm.cs" />
     <Compile Include="IFileController.cs" />
     <Compile Include="IGenerateTransactionForm.cs" />
     <Compile Include="IPensionerController.cs" />

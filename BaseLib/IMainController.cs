@@ -15,5 +15,6 @@ namespace BaseLib
         void ShowGenerateMutualAidForm();
         void ShowGenerateMembershipForm();
         void GetSearchResults(string filter, IMainForm mainForm);
+        void ShowEditSettingsForm();
     }
 }

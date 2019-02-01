@@ -58,7 +58,7 @@ namespace PresentationLayer
 
         private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            _controller.ShowEditSettingsForm();
         }
 
         private void SearchButton_Click(object sender, EventArgs e)

@@ -32,5 +32,10 @@ namespace PresentationLayer
         {
             return new GenerateTransactionForm(transactionController);
         }
+
+        public IEditSettingsForm CreateEditSettingsForm()
+        {
+            return new EditSettingsForm();
+        }
     }
 }

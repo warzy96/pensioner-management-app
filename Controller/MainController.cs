@@ -106,5 +106,11 @@ namespace Controller
 
             mainForm.UpdatePensionerListView(searchResult);
         }
+
+        public void ShowEditSettingsForm()
+        {
+            var form = _formsFactory.CreateEditSettingsForm();
+            form.ShowForm();
+        }
     }
 }

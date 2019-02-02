@@ -15,10 +15,24 @@ namespace DataAccessLayer
     public class PensionerRepository : Subject, IPensionerRepository
     {
         private static PensionerRepository _instance;
-        private ISession Session => NHibernateService.OpenSession();
+
+        private ISession Session => TestSessionFactory != null ? TestSessionFactory.OpenSession() : NHibernateService.OpenSession();
+        private readonly ISessionFactory TestSessionFactory;
 
         private PensionerRepository()
         {
+        }
+
+        //Only for testing purposes
+        private PensionerRepository(ISessionFactory sessionFactory)
+        {
+            TestSessionFactory = sessionFactory;
+        }
+
+        //Only for testing purposes
+        public static PensionerRepository GetInstanceForTesting(ISessionFactory factory)
+        {
+            return _instance ?? (_instance = new PensionerRepository(factory));
         }
 
         public static PensionerRepository GetInstance()
@@ -35,14 +49,6 @@ namespace DataAccessLayer
         }
 
         public Pensioner GetPensioner(string oib)
-        {
-            using (var session = Session)
-            {
-                return session.Get<Pensioner>(oib);
-            }
-        }
-
-        public Pensioner GetPensionerWithTransactions(string oib)
         {
             using (var session = Session)
             {
@@ -85,29 +91,6 @@ namespace DataAccessLayer
                 var pensioner = session.Get<Pensioner>(oib);
 
                 session.Delete(pensioner);
-                transaction.Commit();
-            }
-
-            NotifyObservers();
-        }
-
-        public void UpdatePensioner(int id, string oib, string name, string surname, DateTime dateOfBirth,
-            DateTime membershipStart, string placeOfBirth, string city, string town, string street, int postalCode)
-        {
-            using (var session = Session)
-            {
-                var transaction = session.BeginTransaction();
-
-                var pensioner = GetPensioner(oib);
-
-                pensioner.Name = name;
-                pensioner.Surname = surname;
-                pensioner.DateOfBirth = dateOfBirth;
-                pensioner.MembershipStart = membershipStart;
-                pensioner.PlaceOfBirth = placeOfBirth;
-                pensioner.CurrentAddress = new Address(city, town, street, postalCode);
-
-                session.Update(pensioner);
                 transaction.Commit();
             }
 
@@ -237,15 +220,7 @@ namespace DataAccessLayer
             using (var session = Session)
             {
                 var transaction = session.BeginTransaction();
-
-
-                var transactionTypesToDelete = session.Query<PaymentType>().Where(t =>
-                    t.Pensioner.Id == pensioner.Id && t.Type != PaymentType.TypeEnum.Membership).ToList();
-                foreach (var paymentType in transactionTypesToDelete)
-                {
-                    session.Delete(paymentType);
-                }
-
+                
                 session.Update(pensioner);
 
                 transaction.Commit();

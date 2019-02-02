@@ -13,7 +13,7 @@ namespace PensionerAssociationTests
     public class SqliteDatabaseForTesting : IDisposable
     {
         protected Configuration config;
-        protected ISessionFactory sessionFactory;
+        public ISessionFactory sessionFactory;
         public SqliteDatabaseForTesting()
         {
             var fluentConfig = Fluently.Configure()
@@ -27,21 +27,21 @@ namespace PensionerAssociationTests
             var nhConfiguration = fluentConfig.BuildConfiguration();
             sessionFactory = nhConfiguration.BuildSessionFactory();
 
-            Session = sessionFactory.OpenSession();
-
-            using (var tx = Session.BeginTransaction())
+            using (var session = Session)
             {
-                new SchemaExport(nhConfiguration).Execute(useStdOut: true,
-                                                            execute: true,
-                                                            justDrop: false,
-                                                            connection: Session.Connection,
-                                                            exportOutput: Console.Out);
-                tx.Commit();
+                using (var tx = session.BeginTransaction())
+                {
+                    new SchemaExport(nhConfiguration).Execute(useStdOut: true,
+                        execute: true,
+                        justDrop: false,
+                        connection: session.Connection,
+                        exportOutput: Console.Out);
+                    tx.Commit();
+                }
             }
-
         }
 
-        public ISession Session { get; set; }
+        public ISession Session => sessionFactory.OpenSession();
         public void Dispose()
         {
             Session.Dispose();
